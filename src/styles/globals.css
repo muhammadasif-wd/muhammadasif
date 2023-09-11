@@ -5,3 +5,15 @@
 body {
   color: #393d46;
 }
+
+.background_main {
+  background-image: url("../../public/images/light_mode_background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.background_main_dark {
+  background-image: url("../../public/images/dark_mode_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

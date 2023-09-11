@@ -6,13 +6,14 @@ import Image from "next/image";
 
 function Logo({ mode }) {
   return (
-    <div>
+    <div className="lg:-mt-6 pt-1.5">
       <Link href={"/"}>
         {mode === "dark" ? (
           <Image
             priority
             sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
             src={logoLight}
+            className="w-16 mx-auto"
             alt="logo"
           />
         ) : (
@@ -20,6 +21,7 @@ function Logo({ mode }) {
             priority
             sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
             src={logo}
+            className="w-16 mx-auto"
             alt="logo"
           />
         )}

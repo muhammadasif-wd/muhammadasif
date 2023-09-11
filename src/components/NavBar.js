@@ -63,7 +63,7 @@ const NavBar = () => {
   };
 
   return (
-    <header className="w-full px-32 text-lg py-8 font-medium flex items-center justify-between dark:text-light relative lg:px-16 md:px-12 sm:px-8">
+    <header className="w-full px-32 text-lg pt-8 pb-1 font-medium flex items-center justify-between dark:text-light relative lg:px-16 md:px-12 sm:px-8">
       <button
         className="flex-col justify-center items-center hidden lg:flex"
         onClick={handleClick}
@@ -85,7 +85,7 @@ const NavBar = () => {
         ></span>
       </button>
 
-      <div className="w-full flex justify-between items-center lg:hidden">
+      <div className="w-full flex justify-between items-center lg:hidden bg-white/10 backdrop-blur-md p-5 rounded-xl dark:shadow dark:border-none shadow-md border">
         <nav>
           <CustomLink href={"/"} title={"Home"} className="mr-4" />
           <CustomLink href={"/about"} title={"About"} className="mx-4" />
@@ -93,58 +93,57 @@ const NavBar = () => {
           <CustomLink href={"/articles"} title={"Articles"} className="mx-4" />
         </nav>
 
-        <nav className="flex items-center justify-center">
+        <nav className="flex gap-x-3 items-center justify-center">
           <motion.a
             href={"https://github.com/muhammadasif-wd"}
             target="_blank"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
-            className="w-7 mx-3"
+            className="w-8"
           >
-            <GithubIcon />
+            <GithubIcon className={""} />
           </motion.a>
           <motion.a
             href={"https://www.linkedin.com/in/muhammadasif-wd/"}
             target="_blank"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
-            className="w-6 mx-3"
+            className="w-8"
           >
-            <LinkedInIcon />
+            <LinkedInIcon className={"text-[#0072b1] dark:text-light"} />
           </motion.a>
           <motion.a
             href={"https://www.facebook.com/muhammadasif.coder"}
             target="_blank"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
-            className="w-8 mx-3"
+            className="w-8"
           >
-            <FacebookIcon className="dark:bg-light dark:rounded-full dark:border-2 dark:border-[#1769aa]" />
+            <FacebookIcon className={"text-[#4267B2] dark:text-[#1877F2]"} />
           </motion.a>
           <motion.a
             href={"https://twitter.com/muhammadasif_wd"}
             target="_blank"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
-            className="w-7 mx-3"
+            className="w-8"
           >
-            <TwitterIcon />
+            <TwitterIcon className={"text-[#1DA1F2] dark:text-[#1DA1F2]"} />
           </motion.a>
           <motion.a
             href={"https://www.instagram.com/muhammadasif.wd/"}
             target="_blank"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
-            className="w-8 mx-3"
+            className="w-8"
           >
-            <InstagramIcon
-              className={
-                "dark:bg-light dark:rounded-lg dark:border-2 dark:border-primary"
-              }
-            />
+            <InstagramIcon className={"text-[#e77943]"} />
           </motion.a>
           <button
-            onClick={() => setMode(mode === "light" ? "dark" : "light")}
+            onClick={() => {
+              setMode(mode === "light" ? "dark" : "light"),
+                window.location.reload();
+            }}
             className={`ml-3 flex items-center justify-center rounded-full p-1 ${
               mode === "light" ? "bg-dark text-light" : "bg-light text-dark"
             }`}
@@ -193,58 +192,61 @@ const NavBar = () => {
             />
           </nav>
 
-          <nav className="flex items-center justify-center">
+          <nav
+            className={`w-11/12 flex justify-between items-center ${
+              mode === "dark" ? "bg-light/10" : "bg-light"
+            }  backdrop-blur-md shadow border p-3 rounded-xl`}
+          >
             <motion.a
               href={"https://github.com/muhammadasif-wd"}
               target="_blank"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.9 }}
-              className="w-7 mx-3 sm:mx-1 bg-light dark:bg-dark rounded-full"
+              className="w-8"
             >
-              <GithubIcon />
+              <GithubIcon className={"text-dark"} />
             </motion.a>
             <motion.a
               href={"https://www.linkedin.com/in/muhammadasif-wd/"}
               target="_blank"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.9 }}
-              className="w-6 mx-3 sm:mx-1"
+              className="w-8"
             >
-              <LinkedInIcon />
+              <LinkedInIcon className={"text-[#0072b1]"} />
             </motion.a>
             <motion.a
               href={"https://www.facebook.com/muhammadasif.coder"}
               target="_blank"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.9 }}
-              className="w-8 mx-3 sm:mx-1"
+              className="w-8"
             >
-              <FacebookIcon className="dark:bg-light dark:rounded-full dark:border-2 dark:border-[#1769aa]" />
+              <FacebookIcon className={"text-[#4267B2] dark:text-[#1877F2]"} />
             </motion.a>
             <motion.a
               href={"https://twitter.com/muhammadasif_wd"}
               target="_blank"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.9 }}
-              className="w-7 mx-3 sm:mx-1"
+              className="w-8"
             >
-              <TwitterIcon />
+              <TwitterIcon className={"text-[#1DA1F2] dark:text-[#1DA1F2]"} />
             </motion.a>
             <motion.a
               href={"https://www.instagram.com/muhammadasif.wd/"}
               target="_blank"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.9 }}
-              className="w-8 mx-3 sm:mx-1"
+              className="w-8"
             >
-              <InstagramIcon
-                className={
-                  "dark:bg-light dark:rounded-lg dark:border-2 dark:border-primary"
-                }
-              />
+              <InstagramIcon className={"text-[#e77943]"} />
             </motion.a>
             <button
-              onClick={() => setMode(mode === "light" ? "dark" : "light")}
+              onClick={() => {
+                setMode(mode === "light" ? "dark" : "light"),
+                  window.location.reload();
+              }}
               className={`ml-3 flex items-center justify-center rounded-full p-1 ${
                 mode === "light" ? "bg-dark text-light" : "bg-light text-dark"
               }`}
@@ -259,7 +261,7 @@ const NavBar = () => {
         </motion.div>
       ) : null}
 
-      <div className="lg:w-14 lg:h-14 w-16 h-16 absolute left-[50%] top-8 translate-x-[-50%]">
+      <div className="absolute left-[50%] top-12 translate-x-[-50%]">
         <Logo mode={mode} />
       </div>
     </header>
