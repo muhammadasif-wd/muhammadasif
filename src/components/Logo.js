@@ -4,10 +4,10 @@ import logo from "../../public/images/logo.webp";
 import logoLight from "../../public/images/logo-light.webp";
 import Image from "next/image";
 
-function Logo({ mode }) {
+function Logo({ mode, toggle }) {
   return (
-    <div className="lg:-mt-6 pt-1.5">
-      <Link href={"/"}>
+    <div className="lg:-mt-6 lg:pt-12 pt-1.5">
+      <Link onClick={toggle} href={"/"}>
         {mode === "dark" ? (
           <Image
             priority

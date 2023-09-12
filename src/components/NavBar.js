@@ -39,7 +39,7 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
   return (
     <button
       href={href}
-      className={`${className} relative group text-light dark:text-dark my-2`}
+      className={`${className} relative group text-[#e2e8f0] dark:text-dark my-2`}
       onClick={handleClick}
     >
       {title}
@@ -63,7 +63,7 @@ const NavBar = () => {
   };
 
   return (
-    <header className="w-full px-32 text-lg pt-8 pb-1 font-medium flex items-center justify-between dark:text-light relative lg:px-16 md:px-12 sm:px-8">
+    <header className="w-full px-32 text-lg pt-8 pb-1 font-medium flex items-center justify-between dark:text-[#e2e8f0] relative lg:px-16 md:px-12 sm:px-8">
       <button
         className="flex-col justify-center items-center hidden lg:flex"
         onClick={handleClick}
@@ -110,7 +110,7 @@ const NavBar = () => {
             whileTap={{ scale: 0.9 }}
             className="w-8"
           >
-            <LinkedInIcon className={"text-[#0072b1] dark:text-light"} />
+            <LinkedInIcon className={"text-[#0072b1] dark:text-[#e2e8f0]"} />
           </motion.a>
           <motion.a
             href={"https://www.facebook.com/muhammadasif.coder"}
@@ -145,7 +145,7 @@ const NavBar = () => {
                 window.location.reload();
             }}
             className={`ml-3 flex items-center justify-center rounded-full p-1 ${
-              mode === "light" ? "bg-dark text-light" : "bg-light text-dark"
+              mode === "light" ? "bg-dark text-[#e2e8f0]" : "bg-light text-dark"
             }`}
           >
             {mode === "dark" ? (
@@ -165,6 +165,9 @@ const NavBar = () => {
           initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
           animate={{ scale: 1, opacity: 1 }}
         >
+          <div className="lg:bg-white -mt-20 rounded-full w-20 h-20 mx-auto my-auto">
+            <Logo mode={mode} toggle={handleClick} />
+          </div>
           <nav className="flex items-center flex-col justify-center my-2">
             <CustomMobileLink
               href={"/"}
@@ -248,7 +251,9 @@ const NavBar = () => {
                   window.location.reload();
               }}
               className={`ml-3 flex items-center justify-center rounded-full p-1 ${
-                mode === "light" ? "bg-dark text-light" : "bg-light text-dark"
+                mode === "light"
+                  ? "bg-dark text-[#e2e8f0]"
+                  : "bg-light text-dark"
               }`}
             >
               {mode === "dark" ? (
@@ -261,7 +266,7 @@ const NavBar = () => {
         </motion.div>
       ) : null}
 
-      <div className="absolute left-[50%] top-12 translate-x-[-50%]">
+      <div className="absolute left-[50%] lg:hidden top-12 translate-x-[-50%]">
         <Logo mode={mode} />
       </div>
     </header>
