@@ -122,18 +122,20 @@ const articles = () => {
               }
               summary={`Learn how to build a custom pagination component in ReactJS from scratch. 
              Follow this step-by-step guide to integrate Pagination component in your ReactJS project.`}
-              time={"9 min read"}
-              link={"/"}
+              time={"30 min read"}
+              link={
+                "https://www.freecodecamp.org/news/build-a-custom-pagination-component-in-react/"
+              }
               img={article1}
             />
             <FeaturedArticle
-              title={
-                "Build A Custom Pagination Component In Reactjs From Scratch"
-              }
+              title={"Build A Loading Screen In Reactjs From Scratch"}
               summary={`Learn how to build a custom pagination component in ReactJS from scratch. 
              Follow this step-by-step guide to integrate Pagination component in your ReactJS project.`}
               time={"9 min read"}
-              link={"/"}
+              link={
+                "https://dev.to/beginarjun/how-to-create-a-simple-loading-screen-in-react-1md6"
+              }
               img={article2}
             />
           </ul>
