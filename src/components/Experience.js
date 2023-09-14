@@ -29,7 +29,7 @@ const Details = ({ position, company, companyLink, time, address, work }) => {
         <span className="capitalize font-medium text-dark/75 dark:text-light/75 xs:text-sm">
           {time} | {address}
         </span>
-        <p className="font-medium w-full md:text-sm">{work}</p>
+        <p className="mt-3 w-full md:text-sm">{work}</p>
       </motion.div>
     </li>
   );
@@ -76,7 +76,7 @@ const Experience = () => {
             }
           />
           <Details
-            position={"Project Manager & MERN Stack Developer"}
+            position={"Project Manager"}
             company={"Thinky Storm"}
             companyLink={"https://www.thinkystorm.com/"}
             time={"2023-January - 2023-May"}
