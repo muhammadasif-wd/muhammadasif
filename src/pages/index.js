@@ -9,6 +9,7 @@ import Link from "next/link";
 import { LinkArrow } from "@/components/Icon";
 import HireMe from "@/components/HireMe";
 import TransitionEffect from "@/components/TransitionEffect";
+import MessengerChatButton from "@/components/MessengerChatButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,8 +35,9 @@ export default function Home() {
         <Layout className="pt-16 md:p-16 sm:pt-8">
           <div className="flex items-center justify-between w-full lg:flex-col">
             <div className="mt-16 col-span-3 relative mx-auto h-max rounded-2xl border-2 border-solid border-dark dark:bg-dark dark:border-light bg-light xl:col-span-4 md:order-1 md:col-span-8">
-              <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark dark:bg-light" />
+              <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark/60 dark:bg-light" />
               <Image
+                loading="eager"
                 src={portfolio}
                 alt="muhammad asif"
                 className="w-full h-[60vh] my-auto xl:h-[70vh] lg:h-[60vh] md:h-[70vh] rounded-xl drop-shadow-2xl"
@@ -48,6 +50,7 @@ export default function Home() {
                 text="Turning Vision Into Reality With Code And Design."
                 className="!text-6xl !text-left xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl"
               />
+
               <p className="my-4 text-lightColor dark:text-darkColor text-base font-medium md:text-sm sm:text-xs">
                 As a seasoned full-stack web developer, I specialize in
                 transforming visionary ideas into captivating online solutions.
@@ -77,6 +80,8 @@ export default function Home() {
           </div>
         </Layout>
         <HireMe></HireMe>
+        <MessengerChatButton />
+
         {/* <div className="absolute right-0 bottom-0 inline-block w-24 md:hidden">
           <Image src={lightBulb} alt="Light bulb" className="w-full h-auto" />
         </div> */}
