@@ -34,13 +34,13 @@ export default function Home() {
       <main className="font-mont flex items-center text-dark w-full dark:text-light">
         <Layout className="pt-16 md:p-16 sm:pt-8">
           <div className="flex items-center justify-between w-full lg:flex-col">
-            <div className="mt-16 col-span-3 relative mx-auto h-max rounded-2xl border-2 border-solid border-dark dark:bg-dark dark:border-light bg-light xl:col-span-4 md:order-1 md:col-span-8">
-              <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark/60 dark:bg-light" />
+            <div className="mt-16 col-span-3 relative mx-auto h-max rounded-2xl border-2 border-solid border-dark/70 dark:bg-dark dark:border-light bg-light xl:col-span-4 md:order-1 md:col-span-8">
+              <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark dark:bg-light" />
               <Image
                 loading="eager"
                 src={portfolio}
                 alt="muhammad asif"
-                className="w-full h-[60vh] my-auto xl:h-[70vh] lg:h-[60vh] md:h-[70vh] rounded-xl drop-shadow-2xl"
+                className="w-full my-auto max-h-96 rounded-xl drop-shadow-2xl"
                 priority
                 sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
               />
