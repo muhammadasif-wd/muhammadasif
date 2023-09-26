@@ -80,7 +80,7 @@ export default function Home() {
           </div>
         </Layout>
         <HireMe></HireMe>
-        <MessengerChatButton />
+        {/* <MessengerChatButton /> */}
 
         {/* <div className="absolute right-0 bottom-0 inline-block w-24 md:hidden">
           <Image src={lightBulb} alt="Light bulb" className="w-full h-auto" />
