@@ -3,13 +3,11 @@ import { Inter } from "next/font/google";
 import Head from "next/head";
 import Layout from "@/components/Layout";
 import portfolio from "../../public/images/profile/muhammadasif_profetional_image.webp";
-// import lightBulb from "../../public/images/svgs/miscellaneous_icons_1.svg";
 import AnimatedText from "@/components/AnimatedText";
 import Link from "next/link";
 import { LinkArrow } from "@/components/Icon";
 import HireMe from "@/components/HireMe";
 import TransitionEffect from "@/components/TransitionEffect";
-import MessengerChatButton from "@/components/MessengerChatButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -80,7 +78,6 @@ export default function Home() {
           </div>
         </Layout>
         <HireMe></HireMe>
-        {/* <MessengerChatButton /> */}
 
         {/* <div className="absolute right-0 bottom-0 inline-block w-24 md:hidden">
           <Image src={lightBulb} alt="Light bulb" className="w-full h-auto" />
