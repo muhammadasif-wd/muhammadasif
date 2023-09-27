@@ -12,8 +12,27 @@ body {
   background-position: center;
   background-size: cover;
 }
+
 .background_main_dark {
   background-image: url("../../public/images/dark_mode_background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

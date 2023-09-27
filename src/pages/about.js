@@ -9,6 +9,7 @@ import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import TransitionEffect from "@/components/TransitionEffect";
+import MousewheelCarousel from "@/components/MousewheelCarousel";
 
 const AnimatedNumber = ({ value }) => {
   const ref = useRef(null);
@@ -32,6 +33,30 @@ const AnimatedNumber = ({ value }) => {
 
   return <span ref={ref}></span>;
 };
+
+const carousels_data = [
+  {
+    title: "About Me",
+    content: "I'm Muhammad Asif, a seasoned Full-Stack Developer specializing in the MERN stack. My journey in web development has been an exciting exploration of code, design, and problem-solving. With extensive expertise in various technologies, I bring a wealth of skills to every project. I'm passionate about crafting exceptional user experiences that seamlessly blend aesthetics with functionality. My dedication to innovation and learning drives me to stay at the forefront of web development trends, ensuring that I deliver cutting-edge solutions to my clients.\n\nAs a developer, I thrive on challenges and relish the opportunity to tackle complex problems. I have a track record of transforming ideas into high-quality, scalable web applications that exceed client expectations. My commitment to excellence is unwavering, and I take pride in consistently delivering projects on time and within budget. I'm not just a coder; I'm a digital problem solver, and I'm here to bring your ideas to life.\n\n",
+  },
+  {
+    title: "Frontend Mastery",
+    content: "In my frontend toolkit, you'll find proficiency in HTML, CSS, Bootstrap, and the dynamic versatility of Tailwind CSS. I have a strong command of JavaScript and TypeScript, allowing me to build interactive and responsive interfaces with ease. I'm well-versed in popular frontend libraries and frameworks such as React, Next.js, Vue.js, and Redux. My approach to frontend development goes beyond visuals; it prioritizes intuitive and user-centric design principles. I believe that a well-crafted frontend is the key to engaging user experiences.\n\nUser interface design is an art form, and I take great care in crafting pixel-perfect layouts that not only look stunning but also function flawlessly across devices and browsers. Whether it's creating smooth animations, optimizing performance, or ensuring accessibility, I pay meticulous attention to every detail. I understand that the frontend is the face of your application, and I'm committed to making it shine.\n\n",
+  },
+  {
+    title: "Backend Wizardry",
+    content: "On the backend, I wield the power of Node.js and Express.js to create robust server-side applications. Crafting RESTful and GraphQL APIs is second nature to me, and I'm equally comfortable working with databases like MySQL, PostgreSQL, MongoDB, and other NoSQL variants. My expertise extends to server management and deployment, where I leverage tools such as Docker, Nginx, and AWS to ensure seamless functionality and scalability. I thrive on the challenge of architecting backend solutions that form the backbone of web applications, delivering both speed and security.\n\n",
+  },
+  {
+    title: "Problem Solver Extraordinaire",
+    content: "I take immense pride in my knack for solving complex problems and optimizing code for peak performance. Collaboration is at the heart of my approach, and I excel at effective communication and teamwork. Whether it's coordinating with designers to achieve pixel-perfect designs or collaborating with fellow developers to implement the latest features, I am committed to delivering outstanding results. My strong foundation in Git and Git workflows ensures smooth code collaboration and management, contributing to streamlined development processes.\n\nTroubleshooting and debugging are second nature to me, and I approach every challenge with a methodical and analytical mindset. I understand the importance of creating clean and maintainable code, and I adhere to best practices to ensure code quality and longevity. I'm not just a developer; I'm a problem solver extraordinaire.\n\n",
+  },
+  {
+    title: "Tools and Methodologies",
+    content: "I am well-versed in agile development methodologies and proficient in project management tools like Jira and Trello. Implementing CI/CD pipelines for automated testing and deployment is a standard practice in my workflow, guaranteeing the reliability and efficiency of the projects I undertake. I firmly believe that design transcends aesthetics. It's about creating digital solutions that solve real-world problems and provide users with seamless, enjoyable experiences. Whether it's a website, a mobile app, or any other digital product, I am dedicated to achieving design excellence and maintaining a user-centered approach. I am excited about the prospect of collaborating with you on your next project, leveraging my skills, passion, and dedication to deliver exceptional results. Let's bring your vision to life, one line of code at a time.\n\n",
+  },
+];
+
 
 const about = () => {
   return (
@@ -59,28 +84,8 @@ const about = () => {
           ></AnimatedText>
           <div className="grid w-full grid-cols-8 gap-16 sm:gap-8">
             <div className="col-span-6 flex flex-col items-start justify-start md:col-span-8 md:order-2 sm:col-span-8 font-medium">
-              <h4 className="my-1">
-                <strong>About Me</strong> <br />
-                {`I'm Mohammad Asif, a highly accomplished Frontend and Backend Developer with a deep-rooted proficiency in the MERN stack. My journey in the world of web development has been an exhilarating exploration of code, design, and problem-solving. With expertise in a wide range of technologies and a passion for crafting exceptional user experiences, I bring a wealth of skills to any project I undertake.`}
-              </h4>
-              <h4 className="my-1">
-                <strong>Frontend Mastery</strong> <br />
-                {`My arsenal includes HTML, CSS, Bootstrap, and the dynamic utility of Tailwind CSS, along with proficiency in JavaScript and TypeScript. I'm well-versed in frontend libraries and frameworks such as React, Next.js, Vue.js, and Redux. My approach to frontend development is grounded in creating not just visually appealing interfaces, but also intuitive and user-centric designs.`}
-              </h4>
-              <h4 className="my-1">
-                <strong>Backend Wizardry</strong> <br />
-                {`On the backend, I wield the power of Node.js and Express.js to build robust server-side applications. Crafting RESTful and GraphQL APIs is second nature to me, and I'm equally at home working with databases like MySQL, PostgreSQL, MongoDB, and other NoSQL variants. My expertise extends to server management and deployment, utilizing tools such as Docker, Nginx, and AWS to ensure seamless functionality.`}
-              </h4>
-              <h4 className="my-1">
-                <strong>Problem Solver Extraordinaire</strong> <br />
-                {`I take pride in my knack for solving complex problems and optimizing code for peak performance. Collaboration is key, and I excel at effective communication and teamwork, seamlessly coordinating with designers and fellow developers to deliver outstanding results. With a strong foundation in Git and Git workflows, I ensure smooth code collaboration and management.`}
-              </h4>
-              <h4 className="my-1">
-                <strong>Tools and Methodologies</strong> <br />
-                {`I'm well-versed in agile development methodologies and project management tools such as Jira and Trello. Implementing CI/CD pipelines for automated testing and deployment is a standard practice in my workflow, ensuring the reliability and efficiency of the projects I undertake. I believe that design transcends aesthetics, and my work reflects this philosophy. It's about creating digital solutions that solve real-world problems and provide users with seamless, enjoyable experiences. Whether it's a website, a mobile app, or any other digital product, I'm committed to achieving design excellence and maintaining a user-centered approach. I'm excited about the prospect of collaborating with you on your next project, leveraging my skills, passion, and dedication to deliver exceptional results. Let's bring your vision to life, one line of code at a time.`}
-              </h4>
+              <MousewheelCarousel carousels_data={carousels_data} />
             </div>
-
             <div className="col-span-2 flex flex-col items-end justify-between md:col-span-8 md:flex-row xl:items-center md:order-3">
               <div className="flex flex-col items-end justify-center xl:items-center">
                 <span className="inline-block text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl">
@@ -116,6 +121,7 @@ const about = () => {
           {/* Create Education Section */}
           <Education />
         </Layout>
+
       </main>
     </>
   );
