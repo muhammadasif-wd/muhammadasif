@@ -20,6 +20,7 @@ export default function App({ Component, pageProps }) {
     let theme = window.localStorage.getItem("theme");
     setMode(theme);
   }, []);
+  const page_id = process.env.REACT_APP_FACEBOOK_PAGE_ID_SECRET
   return (
     <>
       <Head>
@@ -44,8 +45,7 @@ export default function App({ Component, pageProps }) {
         <AnimatePresence mode="wait">
           <Component key={router.asPath} {...pageProps} />
           <MessengerChat
-            pageId="133005229895779"
-          // ref="fb-msgr"
+            pageId={page_id}
           />
         </AnimatePresence>
         <Footer />
