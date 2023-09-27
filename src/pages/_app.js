@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import MessengerChat from "@/components/MessengerChat";
 import NavBar from "@/components/NavBar";
 import "@/styles/globals.css";
 import { AnimatePresence } from "framer-motion";
@@ -36,13 +37,16 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <main
-        className={`${jetBrain.variable} ${
-          mode === "dark" ? "background_main_dark" : "background_main"
-        } font-mont w-full min-h-screen`}
+        className={`${jetBrain.variable} ${mode === "dark" ? "background_main_dark" : "background_main"
+          } font-mont w-full min-h-screen`}
       >
         <NavBar />
         <AnimatePresence mode="wait">
           <Component key={router.asPath} {...pageProps} />
+          <MessengerChat
+            pageId="133005229895779"
+          // ref="fb-msgr"
+          />
         </AnimatePresence>
         <Footer />
       </main>
