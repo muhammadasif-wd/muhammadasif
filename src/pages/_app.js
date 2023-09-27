@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }) {
     let theme = window.localStorage.getItem("theme");
     setMode(theme);
   }, []);
-  const page_id = process.env.REACT_APP_FACEBOOK_PAGE_ID_SECRET
+  const page_id = process.env.SECRET_MESSENGER_PAGE_ID
   return (
     <>
       <Head>
