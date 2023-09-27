@@ -25,7 +25,7 @@ export default function MousewheelCarousel({ carousels_data }) {
             onSlideChange={(swiper) => handleSlideChange(swiper)}
             centeredSlides={true}
             autoplay={{
-                delay: 2500,
+                delay: 10000,
                 disableOnInteraction: false,
             }}
             scrollbar={{

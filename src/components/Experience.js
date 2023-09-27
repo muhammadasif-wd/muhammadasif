@@ -42,12 +42,12 @@ const Experience = () => {
   });
 
   return (
-    <div className="my-64">
-      <h2 className="font-bold text-8xl mb-32 w-full text-center md:text-6xl xs:text-4xl md:mb-16">
+    <div>
+      <h2 className="font-bold text-8xl mb-16 w-full text-center md:text-6xl xs:text-4xl md:mb-16">
         Experience
       </h2>
 
-      <div ref={ref} className="w-[75%] mx-auto relative lg:w-[90%] md:w-full">
+      <div ref={ref} className="w-[75%] mx-auto mb-16 relative lg:w-[90%] md:w-full">
         <motion.div
           style={{ scaleY: scrollYProgress }}
           className="absolute left-9 top-0 w-[4px] h-full bg-dark origin-top dark:bg-light md:w-[2px] md:left-[30px] xs:left-[20px]"
@@ -60,7 +60,11 @@ const Experience = () => {
             time={"2023-May - Running"}
             address={"Dhaka 1000 (Beside Rupayan Trade Centre-Banglamotor)."}
             work={
-              "Interlink Technologies Limited is a leading provider of innovative technology solutions to businesses across industries. Since its founding in 2013, the company has established a reputation for excellence in software development, web development, mobile application development, e-commerce solutions, and cloud-based solutions. Interlink Technologies Limited is headquartered in Dubai, United Arab Emirates, with additional offices in the United Kingdom and the Bangladesh."
+              `Frontend Development: React, Redux, JavaScript, Tailwind CSS
+              API Integration: Fetching and displaying data from RESTful APIs
+              Ensured cross-browser compatibility and optimized performance for a seamless user experience.
+              Worked closely with backend developers to connect frontend interfaces with server-side functionality.
+              `
             }
           />
           <Details
@@ -72,19 +76,12 @@ const Experience = () => {
               "Dhaka-1216, Pallabi, House-15, Road-2, Block-B, Section-12"
             }
             work={
-              "Inspire and enable businesses to accelerate and bring ideas to life through technology and software development, maximizing the potential of all stakeholders – clients, partners, and employees.​ Our Values: - Passion​ - Curiosity​ - Integrity​ - Hunger​ - Deadline"
-            }
-          />
-          <Details
-            position={"Project Manager"}
-            company={"Thinky Storm"}
-            companyLink={"https://www.thinkystorm.com/"}
-            time={"2023-January - 2023-May"}
-            address={
-              "Dhaka-1216, Pallabi, House-15, Road-2, Block-B, Section-12"
-            }
-            work={
-              "Worked on a team responsible for developing new features for Thinkystorm. Managing all projects of think storm, optimizing their team, and solving team problems. Managed the whole team's GitHub and worked on the development"
+              `Developed and maintained full-stack web applications using the MERN stack.
+             Designed and implemented APIs for seamless data exchange between the frontend and backend.
+             Utilized MongoDB for database management, schema design, and data manipulation.
+             Created responsive and user-friendly interfaces using React, Redux, JavaScript, HTML, CSS
+             Deployed applications on cloud platforms and optimized performance and scalability.
+             `
             }
           />
         </ul>

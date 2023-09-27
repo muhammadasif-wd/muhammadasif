@@ -28,28 +28,28 @@ module.exports = {
       },
       backgroundImage: {
         circularLight:
-          "repeating-radial-gradient(rgba(0,0,0,0.4) 2px,#ffffff 5px,#ffffff 100px)",
+          "repeating-radial-gradient(rgba(0,0,0,0.4) 2px, #ffffff 5px, #ffffff 100px)",
 
         circularDark:
-          "repeating-radial-gradient(rgba(255,255,255,0.5) 2px,#0b1121 8px,#0b1829 100px)",
+          "repeating-radial-gradient(rgba(255,255,255,0.5) 2px, #0b1121 8px,#0b1829 100px)",
 
         circularLightLg:
-          "repeating-radial-gradient(rgba(0,0,0,0.4) 2px,#ffffff 5px,#ffffff 80px)",
+          "repeating-radial-gradient(rgba(0,0,0,0.4) 2px, #ffffff 5px, #ffffff 80px)",
 
         circularDarkLg:
-          "repeating-radial-gradient(rgba(255,255,255,0.5) 2px,#0b1121 8px,#0b1829 80px)",
+          "repeating-radial-gradient(rgba(255,255,255,0.5) 2px, #0b1121 8px, #0b1829 80px)",
 
         circularLightMd:
-          "repeating-radial-gradient(rgba(0,0,0,0.4) 2px,#ffffff 5px,#ffffff 60px)",
+          "repeating-radial-gradient(rgba(0,0,0,0.4) 2px, #ffffff 5px, #ffffff 60px)",
 
         circularDarkMd:
-          "repeating-radial-gradient(rgba(255,255,255,0.5) 2px,#0b1121 6px,#0b1121 60px)",
+          "repeating-radial-gradient(rgba(255,255,255,0.5) 2px, #0b1121 6px, #0b1121 60px)",
 
         circularLightSm:
-          "repeating-radial-gradient(rgba(0,0,0,0.4) 2px,#ffffff 5px,#ffffff 40px)",
+          "repeating-radial-gradient(rgba(0,0,0,0.4) 2px, #ffffff 5px, #ffffff 40px)",
 
         circularDarkSm:
-          "repeating-radial-gradient(rgba(255,255,255,0.5) 2px,#0b1121 4px,#0b1121 40px)",
+          "repeating-radial-gradient(rgba(255,255,255,0.5) 2px, #0b1121 4px, #0b1121 40px)",
       },
     },
     screens: {
