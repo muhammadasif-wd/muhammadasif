@@ -108,11 +108,11 @@ const articles = () => {
         <meta name="muhammadasif article" content="Muhammad A si f Content" />
       </Head>
       <TransitionEffect />
-      <main className="w-full mb-16 flex flex-col items-center justify-center overflow-hidden dark:text-light">
+      <main className="w-full mb-32 flex flex-col items-center justify-center overflow-hidden dark:text-light">
         <Layout className="pt-16">
           <AnimatedText
             text={"Words Can Change The World!"}
-            className="mb-16 lg:!text-7xl sm:!mb-8 sm:!text-6xl xs:!text-4xl"
+            className="mb-32 lg:!text-7xl sm:!mb-8 sm:!text-6xl xs:!text-4xl"
           />
 
           <ul className="grid grid-cols-2 gap-16 lg:gap-8 md:grid-cols-1 md:gap-y-16">
@@ -145,66 +145,34 @@ const articles = () => {
           <ul>
             <Article
               title={
-                "Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling"
+                "How to add a dynamic title on your React app"
               }
-              date={"March 22, 2023"}
-              link={"/"}
+              date={"Jun 20, 2023  (5 min read)"}
+              link={"https://dev.to/luispa/how-to-add-a-dynamic-title-on-your-react-app-1l7k"}
               img={article3}
             />
             <Article
               title={
                 "Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling"
               }
-              date={"March 22, 2023"}
-              link={"/"}
+              date={"Jun 20, 2023  (3 min read)"}
+              link={"https://medium.com/@davidarmah2022/form-validation-in-reactjs-building-a-reusable-custom-hook-for-inputs-and-error-handling-dcffdeebe72f"}
               img={article4}
             />
             <Article
               title={
-                "Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling"
+                "Smooth Scrolling with React & Framer Motion"
               }
-              date={"March 22, 2023"}
-              link={"/"}
+              date={"Dec 16, 2020 (10 min avr.)"}
+              link={"https://dev.to/ironcladdev/smooth-scrolling-with-react-framer-motion-dih"}
               img={article5}
             />
             <Article
               title={
-                "Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling"
+                "How to Build a Solid To-Do App with React"
               }
-              date={"March 22, 2023"}
-              link={"/"}
-              img={article6}
-            />
-            <Article
-              title={
-                "Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling"
-              }
-              date={"March 22, 2023"}
-              link={"/"}
-              img={article3}
-            />
-            <Article
-              title={
-                "Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling"
-              }
-              date={"March 22, 2023"}
-              link={"/"}
-              img={article4}
-            />
-            <Article
-              title={
-                "Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling"
-              }
-              date={"March 22, 2023"}
-              link={"/"}
-              img={article5}
-            />
-            <Article
-              title={
-                "Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling"
-              }
-              date={"March 22, 2023"}
-              link={"/"}
+              date={"MARCH 2, 2021 (30 min avr.)"}
+              link={"https://www.freecodecamp.org/news/create-a-solid-to-do-app-with-react/"}
               img={article6}
             />
           </ul>

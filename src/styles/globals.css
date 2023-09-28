@@ -30,6 +30,18 @@ body {
   align-items: center;
 }
 
+.swiper-pagination-bullet {
+  padding: 5px 10px;
+  border-radius: 0;
+  width: 30px !important;
+  height: 30px !important;
+  text-align: center;
+  line-height: 30px;
+  color: #000;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.2);
+}
+
 .swiper-slide img {
   display: block;
   width: 100%;

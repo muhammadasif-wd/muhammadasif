@@ -70,34 +70,33 @@ const about = () => {
         <title>Muhammad A SI F | About</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="description"
-          content="I'm Muhammad Asif, a highly skilled MERN stack developer with expertise in MongoDB, Mongoose, Express, React, Next.js, Typescript, and Node.js. I bring a commitment to design excellence and user-centered thinking to every project. Let's work together!"
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif, MERN stack developer, MongoDB, Mongoose, Express, React, Next.js, Typescript, Node.js, web development, mobile app development, user-centered design"
-        />
+        <meta name="description" content="I'm Muhammad Asif, a highly skilled MERN stack developer with expertise in MongoDB, Mongoose, Express, React, Next.js, Typescript, and Node.js. I bring a commitment to design excellence and user-centered thinking to every project. Let's work together!" />
+        <meta name="keywords" content="Muhammad Asif, MERN stack developer, MongoDB, Mongoose, Express, React, Next.js, Typescript, Node.js, web development, mobile app development, user-centered design" />
+
         <meta name="author" content="Muhammad Asif" />
+        <meta name="keywords" content="Muhammad Asif, muhammadasif-wd, muhammadasif.wd, Muhammad, Asif, MERN stack developer, MongoDB, Mongoose, Express, React, Next.js, Typescript, Node.js, web development, mobile app development, user-centered design" />
+        <meta name="keywords" content="Muhammad Asif, muhammadasif-wd, web development, MERN stack developer, MongoDB, Mongoose, Express, React, Next.js, Typescript, Node.js, mobile app development, user-centered design, SEO strategy, Google ranking, first page, on-page optimization, page speed, backlinks, local SEO, schema markup, user experience, analytics, social signals, responsive design, quality content" />
+        <meta name="keywords" content="Muhammad Asif portfolio, web developer, MERN stack, MongoDB, Express, React, Next.js, Typescript, Node.js, mobile app development, user-centered design, SEO strategy, Google ranking, on-page optimization, page speed, backlinks, local SEO, schema markup, user experience, analytics, social signals, responsive design, quality content, keyword research" />
       </Head>
       <TransitionEffect />
       <main className="flex w-full flex-col items-center justify-center dark:text-light">
         <Layout className="pt-16">
           <Swiper
-            className="mySwiper swiper-h"
+            className=""
             spaceBetween={30}
             autoHeight={true}
             pagination={{
               clickable: true,
             }}
+            direction="horizontal"
             modules={[Pagination]}
           >
             <SwiperSlide>
               <AnimatedText
                 text={"Passion Fuels Purpose!"}
-                className="mb-16 lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8"
+                className="mb-32 lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8"
               ></AnimatedText>
-              <div className="grid w-full grid-cols-8 gap-16 sm:gap-8 mb-16">
+              <div className="grid w-full grid-cols-8 gap-16 sm:gap-8 mb-32">
                 <div className="col-span-6 flex flex-col items-start justify-start md:col-span-8 md:order-2 sm:col-span-8 font-medium">
                   <MousewheelCarousel carousels_data={carousels_data} />
                 </div>
