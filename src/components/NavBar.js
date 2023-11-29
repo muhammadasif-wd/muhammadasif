@@ -20,8 +20,9 @@ const CustomLink = ({ href, title, className = "" }) => {
     <Link href={href} className={`${className} relative group`}>
       {title}
       <span
-        className={`h-[2px] inline-block bg-dark absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${router.asPath === href ? "w-full" : "w-0"
-          } dark:bg-light`}
+        className={`h-[2px] inline-block bg-dark absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
+          router.asPath === href ? "w-full" : "w-0"
+        } dark:bg-light`}
       >
         &nbsp;
       </span>
@@ -43,8 +44,9 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
     >
       {title}
       <span
-        className={`h-[2px] inline-block bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${router.asPath === href ? "w-full" : "w-0"
-          }  dark:bg-dark`}
+        className={`h-[2px] inline-block bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
+          router.asPath === href ? "w-full" : "w-0"
+        }  dark:bg-dark`}
       >
         &nbsp;
       </span>
@@ -67,16 +69,19 @@ const NavBar = () => {
         onClick={handleClick}
       >
         <span
-          className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
-            }`}
+          className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
+            isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
+          }`}
         ></span>
         <span
-          className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isOpen ? "opacity-0" : "opacity-140"
-            }`}
+          className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${
+            isOpen ? "opacity-0" : "opacity-140"
+          }`}
         ></span>
         <span
-          className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm  ${isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
-            }`}
+          className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm  ${
+            isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
+          }`}
         ></span>
       </button>
 
@@ -139,8 +144,9 @@ const NavBar = () => {
               setMode(mode === "light" ? "dark" : "light"),
                 window.location.reload();
             }}
-            className={`ml-3 flex items-center justify-center rounded-full p-1 ${mode === "light" ? "bg-dark text-[#e2e8f0]" : "bg-light text-dark"
-              }`}
+            className={`ml-3 flex items-center justify-center rounded-full p-1 ${
+              mode === "light" ? "bg-dark text-[#e2e8f0]" : "bg-light text-dark"
+            }`}
           >
             {mode === "dark" ? (
               <SunIcon className={"fill-dark"} />
@@ -159,7 +165,7 @@ const NavBar = () => {
           initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
           animate={{ scale: 1, opacity: 1 }}
         >
-          <div className="lg:bg-white -mt-20 rounded-full w-20 h-20 mx-auto my-auto">
+          <div className="lg:bg-dark -mt-20 rounded-full w-20 h-20 mx-auto my-auto">
             <Logo mode={mode} toggle={handleClick} />
           </div>
           <nav className="flex items-center flex-col justify-center my-2">
@@ -190,8 +196,9 @@ const NavBar = () => {
           </nav>
 
           <nav
-            className={`w-11/12 flex justify-between items-center ${mode === "dark" ? "bg-light/10" : "bg-light"
-              }  backdrop-blur-md shadow border p-3 rounded-xl`}
+            className={`w-11/12 flex gap-1 justify-between items-center ${
+              mode === "dark" ? "bg-light/10" : "bg-light"
+            }  backdrop-blur-md shadow border p-3 rounded-xl`}
           >
             <motion.a
               href={"https://github.com/muhammadasif-wd"}
@@ -243,10 +250,11 @@ const NavBar = () => {
                 setMode(mode === "light" ? "dark" : "light"),
                   window.location.reload();
               }}
-              className={`ml-3 flex items-center justify-center rounded-full p-1 ${mode === "light"
+              className={`ml-3 flex items-center justify-center rounded-full p-1 ${
+                mode === "light"
                   ? "bg-dark text-[#e2e8f0]"
                   : "bg-light text-dark"
-                }`}
+              }`}
             >
               {mode === "dark" ? (
                 <SunIcon className={"fill-dark"} />
