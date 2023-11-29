@@ -180,52 +180,25 @@ function projects() {
     <>
       <Head>
         <title>Muhammad A SI F | Projects</title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="title" content="Muhammad A SI F | Projects" />
         <meta
           name="description"
-          content="I'm Muhammad Asif, a highly skilled MERN stack developer with expertise in MongoDB, Mongoose, Express, React, Next.js, Typescript, and Node.js. I bring a commitment to design excellence and user-centered thinking to every project. Let's work together!"
+          content="Elevate your online presence with our cutting-edge SEO projects. From crafting captivating and responsive resume websites to optimizing marketplaces for mechanical components, we specialize in boosting visibility and enhancing user experiences. Explore our successes in powering leading manufacturers and seamlessly connecting buyers and sellers. Discover the impact of our SEO strategies on product quality, customer service, and secure transactions. Your journey to a dream home begins with our expertly designed Home Builder and Home Sale websites—effortless, user-friendly, and visually stunning. Explore the art of digital transformation with our SEO projects."
+        />
+
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://muhammadasif.vercel.app/projects"
+        />
+        <meta property="og:title" content="Muhammad A SI F | Projects" />
+        <meta
+          property="og:description"
+          content="Elevate your online presence with our cutting-edge SEO projects. From crafting captivating and responsive resume websites to optimizing marketplaces for mechanical components, we specialize in boosting visibility and enhancing user experiences. Explore our successes in powering leading manufacturers and seamlessly connecting buyers and sellers. Discover the impact of our SEO strategies on product quality, customer service, and secure transactions. Your journey to a dream home begins with our expertly designed Home Builder and Home Sale websites—effortless, user-friendly, and visually stunning. Explore the art of digital transformation with our SEO projects."
         />
         <meta
-          name="keywords"
-          content="Muhammad Asif, MERN stack developer, MongoDB, Mongoose, Express, React, Next.js, Typescript, Node.js, web development, mobile app development, user-centered design"
-        />
-        <meta
-          name="description"
-          content="Thinky Storm Branding Portfolio website showcasing projects developed using React.js, Swiper.js, Tailwind CSS, SMTP, Node.js, and Express. Elevate your online presence with captivating and responsive web experiences."
-        />
-        <meta
-          name="keywords"
-          content="Thinky Storm, Branding Portfolio, React.js, Swiper.js, Tailwind CSS, SMTP, Node.js, Express, Web Development, Responsive Design"
-        />
-        <meta
-          name="description"
-          content="Customize Shopper BD E-commerce website developed using React.js, Silk Slider, Responsive Tailwind CSS, AOS Animation, Node.js, Express, and MongoDB. Contributed to enhancing the online presence of Customize Shopper BD, facilitating secure transactions through Baksh Payment Gateway."
-        />
-        <meta
-          name="keywords"
-          content="Customize Shopper BD, E-commerce, React.js, Silk Slider, Responsive Tailwind CSS, AOS Animation, Node.js, Express, MongoDB, Web Development, E-commerce Solutions"
-        />
-        <meta
-          name="description"
-          content="Explore Muhammad Asif's portfolio featuring projects such as 'Mechanism Trade' and 'Home Z-24.' These projects showcase React.js, Swiper.js, Tailwind CSS, and responsive design. 'Mechanism Trade' is an online marketplace connecting buyers and sellers of mechanical components, while 'Home Z-24' offers a seamless experience for finding your dream home."
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif Portfolio, Mechanism Trade, Home Z-24, React.js, Swiper.js, Tailwind CSS, Responsive Design, Web Development, Online Marketplace, Home Builder, Home Sale"
-        />
-        <meta name="author" content="Muhammad Asif" />
-        <meta
-          name="keywords"
-          content="Muhammad Asif, muhammadasif-wd, muhammadasif.wd, Muhammad, Asif, MERN stack developer, MongoDB, Mongoose, Express, React, Next.js, Typescript, Node.js, web development, mobile app development, user-centered design"
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif, muhammadasif-wd, web development, MERN stack developer, MongoDB, Mongoose, Express, React, Next.js, Typescript, Node.js, mobile app development, user-centered design, SEO strategy, Google ranking, first page, on-page optimization, page speed, backlinks, local SEO, schema markup, user experience, analytics, social signals, responsive design, quality content"
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif portfolio, web developer, MERN stack, MongoDB, Express, React, Next.js, Typescript, Node.js, mobile app development, user-centered design, SEO strategy, Google ranking, on-page optimization, page speed, backlinks, local SEO, schema markup, user experience, analytics, social signals, responsive design, quality content, keyword research"
+          property="og:image"
+          content="https://muhammadasif.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmuhammadasif_profetional_image.b1dbfd92.png&w=640&q=75"
         />
       </Head>
       <TransitionEffect />

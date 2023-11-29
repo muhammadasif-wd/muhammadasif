@@ -42,61 +42,30 @@ const Education = () => {
   return (
     <main>
       <Head>
-        <title>Muhammad A SI F</title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Muhammad A SI F | Education</title>
+        <meta name="title" content="Muhammad A SI F | Education" />
         <meta
           name="description"
-          content="I'm Muhammad Asif, a highly skilled MERN stack developer with expertise in MongoDB, Mongoose, Express, React, Next.js, Typescript, and Node.js. I bring a commitment to design excellence and user-centered thinking to every project. Let's work together!"
+          content="Learning Journey: Web Development at Programming Hero (Nov '21 -
+                Jul '22), ongoing Advanced Web Development, and pursuing Higher
+                Secondary Certificate in Science at Khilgaon Model College."
+        />
+
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://muhammadasif.vercel.app/about/education"
+        />
+        <meta property="og:title" content="Muhammad A SI F | Education" />
+        <meta
+          property="og:description"
+          content="Learning Journey: Web Development at Programming Hero (Nov '21 -
+                Jul '22), ongoing Advanced Web Development, and pursuing Higher
+                Secondary Certificate in Science at Khilgaon Model College."
         />
         <meta
-          name="keywords"
-          content="Muhammad Asif, MERN stack developer, MongoDB, Mongoose, Express, React, Next.js, Typescript, Node.js, web development, mobile app development, user-centered design"
-        />
-        <meta name="author" content="Muhammad Asif" />
-        <meta
-          name="keywords"
-          content="Muhammad Asif, muhammadasif-wd, muhammadasif.wd, Muhammad, Asif, MERN stack developer, MongoDB, Mongoose, Express, React, Next.js, Typescript, Node.js, web development, mobile app development, user-centered design"
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif, muhammadasif-wd, web development, MERN stack developer, MongoDB, Mongoose, Express, React, Next.js, Typescript, Node.js, mobile app development, user-centered design, SEO strategy, Google ranking, first page, on-page optimization, page speed, backlinks, local SEO, schema markup, user experience, analytics, social signals, responsive design, quality content"
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif portfolio, web developer, MERN stack, MongoDB, Express, React, Next.js, Typescript, Node.js, mobile app development, user-centered design, SEO strategy, Google ranking, on-page optimization, page speed, backlinks, local SEO, schema markup, user experience, analytics, social signals, responsive design, quality content, keyword research"
-        />
-        <meta
-          name="description"
-          content="Muhammad Asif's education at Programming Hero was an enriching journey in web development. From November 2021 to July 2022, he rapidly progressed from a beginner to mastering the fundamentals and diving into the world of MERN Stack development. Through hands-on projects and expert guidance, he acquired essential skills and knowledge, establishing a robust foundation for his career as a web developer."
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif, Programming Hero, web development education, MERN Stack development, hands-on projects, web development skills, beginner to advanced"
-        />
-        <meta
-          name="description"
-          content="Muhammad Asif's ongoing advanced web development journey at Programming Hero is focused on mastering various cutting-edge technologies. Starting in April 2023, he is committed to enhancing his web development career by learning and mastering technologies such as Typescript, Mongoose, Redux, Next.js, GraphQL, PostgreSQL, AWS, Docker, Unit Testing, and more. Join him on this journey of continuous learning and professional growth."
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif, Programming Hero, advanced web development, Typescript, Mongoose, Redux, Next.js, GraphQL, PostgreSQL, AWS, Docker, Unit Testing, continuous learning, professional growth, web development career"
-        />
-        <meta
-          name="description"
-          content="Muhammad Asif is currently pursuing his Higher Secondary School Certificate (HSC) at Khilgaon Model College. His HSC program began in January 2023 and is ongoing. Khilgaon Model College (KMUC), inaugurated on 24 August 1970 by Father of the Nation Bangabandhu Sheikh Mujibur Rahman, provides a charming environment and supportive teachers to help him achieve his goal of passing HSC."
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif, Higher Secondary School Certificate, HSC, Khilgaon Model College, education, science department, academic pursuit, Bangabandhu Sheikh Mujibur Rahman"
-        />
-        <meta
-          name="description"
-          content="Muhammad Asif's educational and professional journey includes web development studies at Programming Hero, advanced web development training, and ongoing Higher Secondary School Certificate (HSC) studies at Khilgaon Model College. Discover his commitment to learning web technologies like MERN Stack, Typescript, Mongoose, Redux, Next.js, GraphQL, PostgreSQL, AWS, Docker, Unit Testing, and more. Additionally, he is working towards achieving success in his HSC studies with the science department. Join him on this journey of continuous learning, professional growth, and academic excellence."
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif, web development, Programming Hero, MERN Stack, Typescript, Mongoose, Redux, Next.js, GraphQL, PostgreSQL, AWS, Docker, Unit Testing, advanced web development, HSC, Khilgaon Model College, science department, continuous learning, professional growth, academic excellence"
+          property="og:image"
+          content="https://muhammadasif.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmuhammadasif_profetional_image.b1dbfd92.png&w=640&q=75"
         />
       </Head>
       <TransitionEffect />

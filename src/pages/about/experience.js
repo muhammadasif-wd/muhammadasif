@@ -49,42 +49,32 @@ const Experience = () => {
   return (
     <main>
       <Head>
+        <title>Muhammad A SI F | Experience</title>
+        <meta name="title" content="Muhammad A SI F | Experience" />
         <meta
           name="description"
-          content="I'm Muhammad Asif, a highly skilled MERN stack developer with expertise in MongoDB, Mongoose, Express, React, Next.js, Typescript, and Node.js. I bring a commitment to design excellence and user-centered thinking to every project. Let's work together!"
+          content="Proven track record in transforming ideas into high-quality,
+                scalable web applications; excelling in problem-solving,
+                innovative thinking, and consistently delivering projects on
+                time and within budget."
+        />
+
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://muhammadasif.vercel.app/about/experience"
+        />
+        <meta property="og:title" content="Muhammad A SI F | Experience" />
+        <meta
+          property="og:description"
+          content="Proven track record in transforming ideas into high-quality,
+                scalable web applications; excelling in problem-solving,
+                innovative thinking, and consistently delivering projects on
+                time and within budget."
         />
         <meta
-          name="keywords"
-          content="Muhammad Asif, MERN stack developer, MongoDB, Mongoose, Express, React, Next.js, Typescript, Node.js, web development, mobile app development, user-centered design"
-        />
-        <meta name="author" content="Muhammad Asif" />
-        <meta
-          name="keywords"
-          content="Muhammad Asif, muhammadasif-wd, muhammadasif.wd, Muhammad, Asif, MERN stack developer, MongoDB, Mongoose, Express, React, Next.js, Typescript, Node.js, web development, mobile app development, user-centered design"
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif, muhammadasif-wd, web development, MERN stack developer, MongoDB, Mongoose, Express, React, Next.js, Typescript, Node.js, mobile app development, user-centered design, SEO strategy, Google ranking, first page, on-page optimization, page speed, backlinks, local SEO, schema markup, user experience, analytics, social signals, responsive design, quality content"
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif portfolio, web developer, MERN stack, MongoDB, Express, React, Next.js, Typescript, Node.js, mobile app development, user-centered design, SEO strategy, Google ranking, on-page optimization, page speed, backlinks, local SEO, schema markup, user experience, analytics, social signals, responsive design, quality content, keyword research"
-        />
-        <meta
-          name="description"
-          content="Muhammad Asif is a skilled Frontend Developer at Interlink Technologies Limited, based in Dhaka. He has been contributing to the team since May 2023, specializing in React, Redux, JavaScript, and Tailwind CSS. Muhammad excels in API integration, ensuring seamless data retrieval from RESTful APIs. His work emphasizes cross-browser compatibility and optimized performance to provide users with an exceptional online experience. Collaborating closely with backend developers, he bridges the gap between frontend interfaces and server-side functionality, ensuring smooth and efficient web applications."
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif, Frontend Developer, Interlink Technologies Limited, web development, React, Redux, JavaScript, Tailwind CSS, API Integration, cross-browser compatibility, optimized performance, server-side functionality, web applications"
-        />
-        <meta
-          name="description"
-          content="Muhammad Asif served as a dedicated MERN Stack Developer at Thinky Storm, a dynamic tech company based in Dhaka. From November 2022 to November 2023, he contributed to the development and maintenance of full-stack web applications. Muhammad was responsible for designing and implementing APIs to facilitate seamless data exchange between the frontend and backend components. He demonstrated proficiency in MongoDB for database management, schema design, and data manipulation. His expertise in React, Redux, JavaScript, HTML, and CSS allowed him to craft responsive and user-friendly interfaces. Additionally, Muhammad deployed applications on cloud platforms, optimizing performance and scalability for enhanced user experiences."
-        />
-        <meta
-          name="keywords"
-          content="Muhammad Asif, MERN Stack Developer, Thinky Storm, web development, API design, MongoDB, React, Redux, JavaScript, HTML, CSS, cloud deployment, performance optimization, scalability, full-stack web applications"
+          property="og:image"
+          content="https://muhammadasif.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmuhammadasif_profetional_image.b1dbfd92.png&w=640&q=75"
         />
       </Head>
       <TransitionEffect />
