@@ -4,7 +4,6 @@ import Head from "next/head";
 import React, { useEffect, useRef, useState } from "react";
 import { useInView, useMotionValue, useSpring } from "framer-motion";
 import TransitionEffect from "@/components/TransitionEffect";
-import Link from "next/link";
 import CommonCard from "@/components/CommonCard";
 
 const AnimatedNumber = ({ value }) => {
@@ -62,7 +61,7 @@ const carousels_data = [
   },
 ];
 
-const about = () => {
+const About = () => {
   const [viewData, setViewData] = useState("me");
 
   return (
@@ -193,4 +192,4 @@ const about = () => {
   );
 };
 
-export default about;
+export default About;
