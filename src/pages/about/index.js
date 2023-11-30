@@ -69,7 +69,6 @@ const About = () => {
       <Head>
         <title>Muhammad A SI F | About</title>
         <meta name="title" content="Muhammad A SI F | About" />
-        <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"

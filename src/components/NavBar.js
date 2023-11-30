@@ -165,7 +165,7 @@ const NavBar = () => {
           initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
           animate={{ scale: 1, opacity: 1 }}
         >
-          <div className="lg:bg-dark -mt-20 rounded-full w-20 h-20 mx-auto my-auto">
+          <div className="lg:bg-white dark:bg-dark -mt-20 rounded-full w-20 h-20 mx-auto my-auto">
             <Logo mode={mode} toggle={handleClick} />
           </div>
           <nav className="flex items-center flex-col justify-center my-2">
