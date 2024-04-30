@@ -1,10 +1,12 @@
 import type {Metadata} from "next";
-import {Inter} from "next/font/google";
+
+import {JetBrains_Mono} from "next/font/google";
 import React from "react";
+
 import "../styles/globals.css";
 import {Providers} from "./providers";
 
-const inter = Inter({subsets: ["latin"]});
+const jetBrains = JetBrains_Mono({subsets: ["latin"]});
 
 export const metadata: Metadata = {
   title: "Muhammad Asif",
@@ -19,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={jetBrains.className}>
         <Providers>{children}</Providers>
       </body>
     </html>
