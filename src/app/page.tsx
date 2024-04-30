@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main>
       <ThemeSwitcher />
-      <Button color="primary">Click me</Button>
+      <Button color="primary">Click me Check</Button>
     </main>
   );
 }
