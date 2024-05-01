@@ -4,7 +4,7 @@ import ThemeSwitcher from "./theme-switcher";
 
 export default function Home() {
   return (
-    <main className="h-[100rem]">
+    <main>
       <ThemeSwitcher />
       <Button className="bg-primary">primary</Button>
       <Button className="bg-secondary">secondary</Button>

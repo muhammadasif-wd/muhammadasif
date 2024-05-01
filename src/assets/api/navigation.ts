@@ -12,9 +12,9 @@ export const APINavigation: TNavigation[] = [
     url: "/projects",
   },
   {
-    id: "services",
-    name: "Services",
-    url: "/services",
+    id: "products",
+    name: "Products",
+    url: "/products",
   },
   {
     id: "worlds",
