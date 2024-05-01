@@ -1,10 +1,10 @@
 import {Button} from "@nextui-org/button";
 
-import {ThemeSwitcher} from "./theme-switcher";
+import ThemeSwitcher from "./theme-switcher";
 
 export default function Home() {
   return (
-    <main>
+    <main className="h-[100rem]">
       <ThemeSwitcher />
       <Button className="bg-primary">primary</Button>
       <Button className="bg-secondary">secondary</Button>

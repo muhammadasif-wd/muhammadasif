@@ -4,7 +4,7 @@ import {JetBrains_Mono} from "next/font/google";
 import React from "react";
 
 import "../styles/globals.css";
-import {Providers} from "./providers";
+import Providers from "./providers";
 
 const jetBrains = JetBrains_Mono({subsets: ["latin"]});
 

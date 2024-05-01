@@ -3,11 +3,12 @@ import {Button} from "@nextui-org/button";
 import {Dropdown, DropdownItem, DropdownMenu, DropdownTrigger} from "@nextui-org/dropdown";
 import {useTheme} from "next-themes";
 import {ReactNode, useEffect, useState} from "react";
-import {IconDevice} from "../assets/icons/device";
-import {IconMoon} from "../assets/icons/moon";
-import {IconSun} from "../assets/icons/sun";
 
-export function ThemeSwitcher(): ReactNode {
+import IconDevice from "../assets/icons/device";
+import IconMoon from "../assets/icons/moon";
+import IconSun from "../assets/icons/sun";
+
+export default function ThemeSwitcher(): ReactNode {
   const [mounted, setMounted] = useState(false);
   const {theme, setTheme} = useTheme();
 
@@ -24,7 +25,7 @@ export function ThemeSwitcher(): ReactNode {
   return (
     <Dropdown placement="bottom-start" size="sm">
       <DropdownTrigger>
-        <Button isIconOnly variant="flat">
+        <Button isIconOnly size="sm" variant="flat">
           {theme === "light" ? <IconSun /> : <IconMoon />}
         </Button>
       </DropdownTrigger>
