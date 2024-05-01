@@ -8,7 +8,7 @@ import IconLinkedin from "@/assets/icons/linkedin";
 
 export default function Footer() {
   return (
-    <footer className="border-t py-5 bottom-0 absolute w-full">
+    <footer className="border-t py-5 w-full">
       <div className="container">
         <div className="grid sm:grid-cols-3 grid-cols-1 place-content-center place-items-center">
           <div className="flex items-center gap-3 sm:order-1 order-3 text-xs sm:text-sm text-center text-dark dark:text-light">
