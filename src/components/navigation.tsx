@@ -17,7 +17,7 @@ export default function Navigation() {
   const [navbar, setNavbar] = useState<boolean>(false);
 
   return (
-    <main>
+    <main className="!z-50">
       <Navbar isBordered shouldHideOnScroll className="fixed w-full">
         <NavbarContent justify="start">
           <NavbarBrand>
