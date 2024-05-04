@@ -9,7 +9,7 @@ import {images} from "@/utils/images";
 export default function Home() {
   const recipient = "muhammadasif.wd@gmail.com";
   const subject = "Contact from Portfolio";
-  const body = "Hello ASIF,";
+  const body = "Hello ASIF, I visited your portfolio and I would like to contact you.";
   const phone = "+8801830018193";
   const message = "Hello ASIF, I visited your portfolio and I would like to contact you.";
 
