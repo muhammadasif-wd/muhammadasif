@@ -2,42 +2,52 @@ import {TNavigation, TSocialNavigation} from "@/types/navigation.type";
 
 export const APINavigation: TNavigation[] = [
   {
-    id: "about",
+    _id: "about",
     name: "About",
     url: "/about",
   },
   {
-    id: "projects",
+    _id: "skills",
+    name: "Skills",
+    url: "/skills",
+  },
+  {
+    _id: "projects",
     name: "Projects",
     url: "/projects",
   },
   {
-    id: "products",
+    _id: "products",
     name: "Products",
     url: "/products",
   },
   {
-    id: "worlds",
+    _id: "worlds",
     name: "Worlds",
     url: "/worlds",
+  },
+  {
+    _id: "contact",
+    name: "Contact",
+    url: "/contact",
   },
 ];
 export const APISocial: TSocialNavigation[] = [
   {
-    id: "github",
+    _id: "github",
     name: "Github",
     url: "https://github.com/muhammadasif-wd",
     icon: "github",
   },
   {
-    id: "linkedin",
+    _id: "linkedin",
     name: "Linkedin",
     url: "https://www.linkedin.com/in/muhammadasif-wd/",
     icon: "linkedin",
   },
 
   {
-    id: "facebook",
+    _id: "facebook",
     name: "Facebook",
     url: "https://www.facebook.com/muhammadasif.wd",
     icon: "facebook",

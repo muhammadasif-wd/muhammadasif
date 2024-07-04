@@ -28,7 +28,12 @@
     }
   },
   "rules": {
-    "no-console": ["warn", {"allow": ["error", "info"]}],
+    "no-console": [
+      "warn",
+      {
+        "allow": ["error", "info"]
+      }
+    ],
     "react/prop-types": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",

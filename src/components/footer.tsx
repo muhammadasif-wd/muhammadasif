@@ -8,34 +8,30 @@ import IconLinkedin from "@/assets/icons/linkedin";
 
 export default function Footer() {
   return (
-    <footer className="border-t py-5 w-full">
+    <footer className="bg-black text-light py-5 w-full">
       <div className="container">
-        <div className="grid sm:grid-cols-3 grid-cols-1 place-content-center place-items-center">
-          <div className="flex items-center gap-3 sm:order-1 order-3 text-xs sm:text-sm text-center text-dark dark:text-light">
-            <Link href="/terms">Terms</Link>
-            <Link href="/privacy">Privacy</Link>
-            <Link href="/policy">Policy</Link>
-          </div>
-          <p className="text-xs sm:text-sm text-center order-2">
-            &copy; {new Date().getFullYear()} Muhammad Asif
-          </p>
-          <div className="flex items-center gap-1  sm:order-3 order-1">
-            {APISocial.map(({icon, id, url}) => (
+        <div className="flex sm:flex-nowrap flex-wrap gap-5 items-center justify-between">
+          <div className="space-x-1 text-start">
+            <p className="font-bold uppercase pb-1">Muhammad Asif</p>
+            {APISocial.map(({icon, _id, url}) => (
               <Button
-                key={id}
+                key={_id}
                 isIconOnly
                 as={Link}
-                color="default"
                 href={url}
+                radius="sm"
                 size="sm"
                 target="_blank"
-                variant="light"
               >
                 {icon === "github" && <IconGithub className="w-5 h-5" />}
                 {icon === "linkedin" && <IconLinkedin className="w-5 h-5" />}
                 {icon === "facebook" && <IconFacebook className="w-5 h-5" />}
               </Button>
             ))}
+          </div>
+          <div>
+            <p className="sm:text-end text-start">&copy; 2021 - {new Date().getFullYear()}</p> All
+            rights reserved
           </div>
         </div>
       </div>
