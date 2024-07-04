@@ -1,12 +1,12 @@
 import type {Metadata} from "next";
 
-import {JetBrains_Mono} from "next/font/google";
+import {Sora} from "next/font/google";
 import React from "react";
 
 import "../styles/globals.css";
 import Providers from "./providers";
 
-const jetBrains = JetBrains_Mono({subsets: ["latin"]});
+const sora = Sora({subsets: ["latin"]});
 
 export const metadata: Metadata = {
   title: "Muhammad Asif",
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={jetBrains.className}>
+      <body className={sora.className}>
         <Providers>{children}</Providers>
       </body>
     </html>

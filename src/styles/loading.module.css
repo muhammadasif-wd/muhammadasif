@@ -1,8 +1,8 @@
 #wifi_loader {
-  --background: #6da5c0;
-  --front-color: #0f969c;
-  --back-color: #c3c8de;
-  --text-color: #294d61;
+  --background: #ffffff;
+  --front-color: #27272a;
+  --back-color: #404040;
+  --text-color: #000000;
   width: 64px;
   height: 64px;
   border-radius: 50px;

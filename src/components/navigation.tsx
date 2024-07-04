@@ -15,13 +15,13 @@ const Navigation = () => {
 
   return (
     <section className="py-6 container">
-      <div className="flex items-center justify-between py-2 px-8">
+      <div className="flex items-center justify-between py-2">
         <div>
           <Link className="font-bold uppercase" href={"/"}>
             Asif
           </Link>
         </div>
-        <div className="lg:flex hidden gap-5 items-center font-bold">
+        <div className="md:flex hidden gap-5 items-center font-bold">
           {APINavigation.map((nav) => (
             <Link key={nav._id} href={nav.url}>
               <p className="font-bold capitalize">{nav.name}</p>
@@ -29,12 +29,12 @@ const Navigation = () => {
           ))}
         </div>
         <div>
-          <Button className="font-bold lg:flex hidden" color="primary" radius="sm">
+          <Button className="font-bold md:flex hidden" color="primary" radius="sm">
             Resume <IconDownload height={15} width={15} />
           </Button>
           <Button
             isIconOnly
-            className="font-bold lg:hidden flex"
+            className="font-bold md:hidden flex"
             color="primary"
             radius="sm"
             variant="light"
@@ -48,13 +48,13 @@ const Navigation = () => {
         <>
           <motion.div
             animate={{x: 0}}
-            className="fixed top-0 right-0 w-3/4 h-full bg-white shadow-lg z-50 lg:hidden"
+            className="fixed top-0 right-0 w-3/4 h-full bg-white shadow-lg z-50 md:hidden"
             exit={{x: "100%"}}
             initial={{x: "100%"}}
             transition={{type: "spring", stiffness: 300, damping: 30, mass: 1}}
           >
             <div className="flex flex-col space-y-1 container my-5">
-              <div className="lg:hidden flex justify-end">
+              <div className="md:hidden flex justify-end">
                 <Button
                   isIconOnly
                   className="font-bold"
@@ -73,7 +73,7 @@ const Navigation = () => {
                   </Link>
                 </Button>
               ))}
-              <Button className="font-bold lg:hidden flex" color="primary" radius="sm">
+              <Button className="font-bold md:hidden flex" color="primary" radius="sm">
                 Resume <IconDownload height={15} width={15} />
               </Button>
             </div>

@@ -7,11 +7,6 @@ export const APINavigation: TNavigation[] = [
     url: "/about",
   },
   {
-    _id: "skills",
-    name: "Skills",
-    url: "/skills",
-  },
-  {
     _id: "projects",
     name: "Projects",
     url: "/projects",
@@ -26,13 +21,14 @@ export const APINavigation: TNavigation[] = [
     name: "Worlds",
     url: "/worlds",
   },
-  {
-    _id: "contact",
-    name: "Contact",
-    url: "/contact",
-  },
 ];
 export const APISocial: TSocialNavigation[] = [
+  {
+    _id: "whatsapp",
+    name: "Whatsapp",
+    url: "https://wa.me/+8801830018193/?text=Hello A SI F!",
+    icon: "whatsapp",
+  },
   {
     _id: "github",
     name: "Github",
