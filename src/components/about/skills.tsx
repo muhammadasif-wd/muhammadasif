@@ -15,7 +15,7 @@ const Skills = () => {
         {skills.map(({img, name}, index) => (
           <div
             key={index}
-            className="border-2 rounded border-primary p-6 hover:bg-black hover:text-light"
+            className="border-2 rounded border-primary p-6 hover:bg-black hover:text-light duration-300 ease-in-out"
           >
             <Image
               alt={name + img}

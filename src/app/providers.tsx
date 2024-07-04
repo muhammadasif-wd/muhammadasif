@@ -12,7 +12,7 @@ export default function Providers({children}: {children: React.ReactNode}) {
     <NextUIProvider>
       <ThemeProvider attribute="class" defaultTheme="light">
         <Navigation />
-        <main className="my-10 max-w-screen-2xl mx-auto container">{children}</main>
+        <main className="my-10">{children}</main>
         <Footer />
       </ThemeProvider>
     </NextUIProvider>
