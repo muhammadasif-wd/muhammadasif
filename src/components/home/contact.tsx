@@ -43,7 +43,7 @@ const Contact = () => {
             placeholder="How can I help?*"
             rows={5}
           />
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <Button className="font-bold" color="primary" radius="sm" size="lg">
               Get In Touch
             </Button>
@@ -82,7 +82,20 @@ const Contact = () => {
             memorable interactive experiences.
           </p>
           <div>
-            <h1 className="font-semibold text-2xl">muhammadasif.wd@gmail.com</h1>
+            <h1 className="font-semibold text-2xl whitespace-pre-wrap">
+              <Link
+                href={
+                  "mailto:muhammadasif.wd@gmail.com" +
+                  "?subject=" +
+                  encodeURIComponent("From portfolio website") +
+                  "&body=" +
+                  encodeURIComponent("Hello,\n\n")
+                }
+                target="_blank"
+              >
+                muhammadasif.wd@
+              </Link>
+            </h1>
             <h1 className="font-semibold text-2xl">+88 01830018193</h1>
           </div>
         </article>
