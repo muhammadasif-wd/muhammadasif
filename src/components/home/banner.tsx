@@ -71,7 +71,7 @@ const Banner = () => {
       <div className="lg:order-2 order-1 flex justify-center">
         <Image
           alt="portfolio-banner-image"
-          className="md:max-w-[575px] lg:min-w-[720px] xl:min-w-[889px] w-full mx-auto"
+          className="md:max-w-[575px] lg:min-w-[720px] xl:min-w-[889px] w-full mx-auto -z-50"
           height={596}
           src={"/images/home/home-banner.svg"}
           width={889}

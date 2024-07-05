@@ -26,8 +26,8 @@ const Contact = () => {
           <input className={inputStyle} id="email" name="email" placeholder="Email" type="email" />
           <input
             className={inputStyle}
-            id="name"
-            name="name"
+            id="number"
+            name="number"
             placeholder="Your number (whatsapp exists)*"
             type="text"
           />
