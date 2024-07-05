@@ -10,33 +10,29 @@ import {IconWhatsapp} from "@/assets/icons/whatsapp";
 import TextStroke from "@/hooks/text-stroke";
 
 const Contact = () => {
+  let inputStyle = `border-2 border-primary dark:border-zinc-500 dark:placeholder:text-zinc-300 rounded w-full p-3 placeholder:text-zinc-500 outline-none dark:bg-primary`;
+
   return (
     <div className="grid lg:grid-cols-2 lg:gap-20 gap-10 place-content-center place-items-center py-10">
       <div>
         <form action="" className="space-y-5">
           <input
-            className="border-2 border-black rounded w-full p-3 placeholder:text-zinc-500 outline-none"
+            className={inputStyle}
             id="name"
             name="name"
             placeholder="Your name*"
             type="text"
           />
+          <input className={inputStyle} id="email" name="email" placeholder="Email" type="email" />
           <input
-            className="border-2 border-black rounded w-full p-3 placeholder:text-zinc-500 outline-none"
-            id="email"
-            name="email"
-            placeholder="Email"
-            type="email"
-          />
-          <input
-            className="border-2 border-black rounded w-full p-3 placeholder:text-zinc-500 outline-none"
+            className={inputStyle}
             id="name"
             name="name"
             placeholder="Your number (whatsapp exists)*"
             type="text"
           />
           <textarea
-            className="border-2 border-black rounded w-full p-3 placeholder:text-zinc-500 outline-none"
+            className={inputStyle}
             cols={30}
             id="message"
             name="message"
@@ -44,7 +40,11 @@ const Contact = () => {
             rows={5}
           />
           <div className="flex flex-wrap items-center gap-3">
-            <Button className="font-bold" color="primary" radius="sm" size="lg">
+            <Button
+              className="font-bold md:flex hidden bg-primary text-light dark:bg-light dark:text-primary"
+              radius="sm"
+              size="lg"
+            >
               Get In Touch
             </Button>
             <div className="flex gap-3 items-center font-bold">
@@ -53,7 +53,7 @@ const Contact = () => {
                   key={_id}
                   isIconOnly
                   as={Link}
-                  className="border text-black hover:bg-black hover:text-light"
+                  className="border dark:text-light dark:hover:bg-white dark:hover:text-primary text-primary hover:bg-primary hover:text-light"
                   href={url}
                   radius="sm"
                   size="lg"
@@ -77,7 +77,7 @@ const Contact = () => {
             <TextStroke strokeColor="#000000" strokeWidth="0px" text="talk" textColor="#FFFFFF" />{" "}
             for <br /> Something special
           </h1>
-          <p className="text-zinc-500 mt-5 mb-10">
+          <p className="text-zinc-500 dark:text-zinc-300 mt-5 mb-10">
             I seek to push the limits of creativity to create high-engaging, user-friendly, and
             memorable interactive experiences.
           </p>
@@ -96,7 +96,9 @@ const Contact = () => {
                 muhammadasif.wd@
               </Link>
             </h1>
-            <h1 className="font-semibold text-2xl">+88 01830018193</h1>
+            <Link href={`tel:+8801830018193`}>
+              <h1 className="font-semibold text-2xl">+88 01830018193</h1>
+            </Link>
           </div>
         </article>
       </div>

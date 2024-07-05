@@ -13,7 +13,7 @@ const page = () => {
         <Banner />
         <Skills />
       </div>
-      <div className="bg-black py-20">
+      <div className="bg-primary py-20">
         <div className="container">
           <Experience />
         </div>

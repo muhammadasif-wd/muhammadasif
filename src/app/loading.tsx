@@ -1,7 +1,7 @@
 import loadingStyle from "../styles/loading.module.css";
 export default function Loading() {
   return (
-    <div className="flex items-center justify-center min-h-[75vh]">
+    <div className="flex items-center justify-center min-h-screen">
       <div id={loadingStyle.wifi_loader}>
         <svg className={loadingStyle.circle_outer} viewBox="0 0 86 86">
           <circle className={loadingStyle.back} cx="43" cy="43" r="40" />

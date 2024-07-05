@@ -13,7 +13,7 @@ const Experience = () => {
         </h1>
       </article>
       <div className="py-10">
-        <article className="text-light space-y-8 ">
+        <article className="text-light space-y-8">
           {experience.map(({date, details, img, link, name}, index) => (
             <div
               key={name + index}

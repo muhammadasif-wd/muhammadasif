@@ -7,6 +7,7 @@ import {APINavigation} from "@/assets/api/navigation";
 import {IconDownload} from "@/assets/icons/download";
 import IconMenu from "@/assets/icons/menu";
 import IconClose from "@/assets/icons/close";
+import ThemeSwitcher from "@/app/theme-switcher";
 
 const Navigation = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -28,13 +29,19 @@ const Navigation = () => {
             </Link>
           ))}
         </div>
-        <div>
-          <Button className="font-bold md:flex hidden" color="primary" radius="sm">
+        <div className="flex items-center gap-3">
+          <div className="md:flex hidden">
+            <ThemeSwitcher />
+          </div>
+          <Button
+            className="font-bold md:flex hidden bg-primary text-light dark:bg-light dark:text-primary"
+            radius="sm"
+          >
             Resume <IconDownload height={15} width={15} />
           </Button>
           <Button
             isIconOnly
-            className="font-bold md:hidden flex"
+            className="font-bold md:hidden flex text-primary dark:text-light"
             color="primary"
             radius="sm"
             variant="light"
@@ -48,17 +55,19 @@ const Navigation = () => {
         <>
           <motion.div
             animate={{x: 0}}
-            className="fixed top-0 right-0 w-3/4 h-full bg-white shadow-lg z-50 md:hidden"
+            className="fixed top-0 right-0 w-3/4 h-full dark:bg-primary bg-white shadow-lg z-50 md:hidden"
             exit={{x: "100%"}}
             initial={{x: "100%"}}
             transition={{type: "spring", stiffness: 300, damping: 30, mass: 1}}
           >
             <div className="flex flex-col space-y-1 container my-5">
-              <div className="md:hidden flex justify-end">
+              <div className="md:hidden flex justify-between items-center">
+                <div className="md:hidden flex">
+                  <ThemeSwitcher />
+                </div>
                 <Button
                   isIconOnly
-                  className="font-bold"
-                  color="primary"
+                  className="font-bold bg-primary text-light dark:bg-light dark:text-primary"
                   radius="sm"
                   size="sm"
                   onClick={toggleDrawer}
@@ -67,20 +76,22 @@ const Navigation = () => {
                 </Button>
               </div>
               {APINavigation.map((nav) => (
-                <Button key={nav._id} radius="sm">
-                  <Link className="font-bold" href={nav.url}>
-                    {nav.name}
-                  </Link>
+                <Button key={nav._id} as={Link} href={nav.url} radius="sm">
+                  {nav.name}
                 </Button>
               ))}
-              <Button className="font-bold md:hidden flex" color="primary" radius="sm">
+              <Button
+                className="font-bold md:hidden flex bg-primary text-light dark:bg-light dark:text-primary"
+                color="primary"
+                radius="sm"
+              >
                 Resume <IconDownload height={15} width={15} />
               </Button>
             </div>
           </motion.div>
           <motion.div
             animate={{opacity: 1}}
-            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            className="fixed inset-0 bg-primary bg-opacity-50 z-40"
             exit={{opacity: 0}}
             initial={{opacity: 0}}
             transition={{duration: 0.5, ease: "easeInOut"}}

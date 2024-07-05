@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {Button} from "@nextui-org/button";
+import {useTheme} from "next-themes";
 
 import TextStroke from "@/hooks/text-stroke";
 import {APISocial} from "@/assets/api/navigation";
@@ -11,6 +13,8 @@ import {IconFacebook} from "@/assets/icons/facebook";
 import {IconWhatsapp} from "@/assets/icons/whatsapp";
 
 const Banner = () => {
+  const {theme} = useTheme();
+
   return (
     <section className="grid lg:grid-cols-2 place-content-center lg:place-items-end place-items-center gap-y-10">
       <div className="lg:order-1 order-2">
@@ -23,10 +27,10 @@ const Banner = () => {
           <h1 className="text-4xl font-extrabold leading-relaxed">
             Software{" "}
             <TextStroke
-              strokeColor="#000000"
+              strokeColor={theme === "light" ? "#000000" : "#FFFFFF"}
               strokeWidth="0px"
               text="Engineer"
-              textColor="#FFFFFF"
+              textColor={theme === "light" ? "#FFFFFF" : "#000000"}
             />
             <br />
           </h1>
@@ -49,7 +53,7 @@ const Banner = () => {
               key={_id}
               isIconOnly
               as={Link}
-              className="border text-black hover:bg-black hover:text-light"
+              className="border dark:text-light dark:hover:bg-white dark:hover:text-primary text-primary hover:bg-primary hover:text-light"
               href={url}
               radius="sm"
               size="lg"

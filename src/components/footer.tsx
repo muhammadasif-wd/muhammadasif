@@ -9,7 +9,7 @@ import {IconWhatsapp} from "@/assets/icons/whatsapp";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-light py-5 w-full">
+    <footer className="bg-primary dark:border-t-1 text-light py-5 w-full">
       <div className="container">
         <div className="flex sm:flex-nowrap flex-wrap gap-5 items-center justify-between">
           <div className="space-x-1 text-start">

@@ -25,7 +25,7 @@ export default function ThemeSwitcher(): ReactNode {
   return (
     <Dropdown placement="bottom-start" size="sm">
       <DropdownTrigger>
-        <Button isIconOnly size="sm" variant="flat">
+        <Button isIconOnly radius="sm" variant="flat">
           {theme === "light" ? <IconSun /> : <IconMoon />}
         </Button>
       </DropdownTrigger>
