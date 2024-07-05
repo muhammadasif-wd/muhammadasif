@@ -4,6 +4,7 @@ import Banner from "@/components/home/banner";
 import Skills from "@/components/about/skills";
 import Experience from "@/components/about/experience";
 import Testimonial from "@/components/home/testimonial";
+import Contact from "@/components/home/contact";
 
 const page = () => {
   return (
@@ -19,6 +20,7 @@ const page = () => {
       </div>
       <div className="container space-y-20">
         <Testimonial />
+        <Contact />
       </div>
     </div>
   );

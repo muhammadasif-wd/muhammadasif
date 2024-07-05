@@ -43,7 +43,7 @@ const Banner = () => {
           transform visionary ideas into tangible, cutting-edge software.`}
           </p>
         </article>
-        <div className="lg:flex hidden gap-3 items-center font-bold mt-10">
+        <div className="flex gap-3 items-center font-bold mt-10">
           {APISocial.map(({icon, _id, url}) => (
             <Button
               key={_id}
