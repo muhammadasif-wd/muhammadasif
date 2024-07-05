@@ -1,14 +1,28 @@
-import {Button} from "@nextui-org/button";
-import Image from "next/image";
+"use client";
 import React from "react";
+import Image from "next/image";
+import {useTheme} from "next-themes";
+import {Button} from "@nextui-org/button";
 
+import TextStroke from "@/hooks/text-stroke";
 const Events = () => {
+  const {theme} = useTheme();
+
   return (
     <div className="grid xl:grid-cols-2 gap-10 place-content-center place-items-start">
       <div className="xl:order-1 order-2">
         <article>
           <h1 className="text-4xl leading-relaxed">
-            My <span className="font-extrabold">Events & Conferences</span>
+            My{" "}
+            <span className="font-extrabold">
+              Events &{" "}
+              <TextStroke
+                strokeColor={theme === "light" ? "#000000" : "#FFFFFF"}
+                strokeWidth="0px"
+                text="Conferences"
+                textColor={theme === "light" ? "#FFFFFF" : "#000000"}
+              />
+            </span>
           </h1>
           <article className="space-y-5 mt-10 leading-relaxed text-zinc-500">
             <p>{`I'm passionate about staying at the forefront of industry advancements, which is why I actively participate in various events and conferences. Recently, I've had the opportunity to attend several insightful gatherings`}</p>
