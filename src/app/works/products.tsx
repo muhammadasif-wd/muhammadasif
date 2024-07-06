@@ -13,7 +13,7 @@ const Products = () => {
   return (
     <div className="container">
       <article className="mb-10 md:mb-16">
-        <h2 className="mb-4 text-center text-2xl font-bold text-zinc-800 md:mb-6 lg:text-3xl">
+        <h2 className="mb-4 text-center text-2xl font-bold text-zinc-800 dark:text-light md:mb-6 lg:text-3xl">
           My{" "}
           <TextStroke
             strokeColor={theme === "light" ? "#FFFFFF" : "#000000"}
