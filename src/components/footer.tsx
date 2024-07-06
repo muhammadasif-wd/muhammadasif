@@ -34,8 +34,8 @@ export default function Footer() {
             ))}
           </div>
           <div>
-            <p className="sm:text-end text-start">&copy; 2021 - {new Date().getFullYear()}</p> All
-            rights reserved
+            <p className="sm:text-end text-start">&copy; 2021 - {new Date().getFullYear()} ASIF</p>{" "}
+            All rights reserved
           </div>
         </div>
       </div>

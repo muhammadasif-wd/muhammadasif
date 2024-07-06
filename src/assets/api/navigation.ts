@@ -7,14 +7,9 @@ export const APINavigation: TNavigation[] = [
     url: "/about",
   },
   {
-    _id: "projects",
-    name: "Projects",
-    url: "/projects",
-  },
-  {
-    _id: "products",
-    name: "Products",
-    url: "/products",
+    _id: "works",
+    name: "Works",
+    url: "/works",
   },
   {
     _id: "worlds",

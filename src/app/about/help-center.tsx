@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 
 const HelpCenter = () => {
-  let inputStyle = `border-2 border-primary border-zinc-500 placeholder:text-zinc-300 rounded w-full p-3 outline-none bg-primary`;
+  let inputStyle = `border-2 border-zinc-500 placeholder:text-zinc-300 rounded w-full p-3 outline-none bg-primary`;
 
   return (
     <div className="container">

@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import {Button} from "@nextui-org/button";
 
 import Events from "./events";
 import Achievements from "./achievements";
 import HelpCenter from "./help-center";
+
+import NewsLatter from "@/components/news-latter";
 
 const About = () => {
   return (
@@ -41,31 +42,8 @@ const About = () => {
       <div className="bg-primary py-20">
         <HelpCenter />
       </div>
-      <div className="container grid md:grid-cols-2 gap-y-10 md:place-content-center">
-        <article>
-          <h1 className="text-4xl leading-relaxed">
-            News <span className="font-extrabold">Latter</span>
-          </h1>
-          <article className="space-y-5 leading-relaxed text-zinc-500">
-            <p>{`Subscribe to my newsletter`}</p>
-          </article>
-        </article>
-        <div className="flex gap-3 items-center">
-          <input
-            className={`border-2 border-primary dark:border-zinc-500 dark:placeholder:text-zinc-300 rounded w-full p-3 placeholder:text-zinc-500 outline-none dark:bg-primary`}
-            id="email"
-            name="email"
-            placeholder="Email"
-            type="email"
-          />
-          <Button
-            className="font-bold bg-primary text-light dark:bg-light dark:text-primary"
-            radius="sm"
-            size="lg"
-          >
-            Subscribe
-          </Button>
-        </div>
+      <div>
+        <NewsLatter />
       </div>
     </section>
   );
