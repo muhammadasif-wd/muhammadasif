@@ -78,8 +78,8 @@ const Contact = () => {
             for <br /> Something special
           </h1>
           <p className="text-zinc-500 dark:text-zinc-300 mt-5 mb-10">
-            I seek to push the limits of creativity to create high-engaging, user-friendly, and
-            memorable interactive experiences.
+            {`I am eager to collaborate and bring your vision to life. Reach out today, and let's turn
+            your ideas into reality.`}
           </p>
           <div>
             <h1 className="font-semibold text-2xl whitespace-pre-wrap">
