@@ -5,6 +5,23 @@ export const APINavigation: TNavigation[] = [
     _id: "about",
     name: "About",
     url: "/about",
+    submenu: [
+      {
+        _id: "about",
+        name: "About",
+        url: "/about",
+      },
+      {
+        _id: "events",
+        name: "Events",
+        url: "/about/events",
+      },
+      {
+        _id: "gallery",
+        name: "Gallery",
+        url: "/about/gallery",
+      },
+    ],
   },
   {
     _id: "works",
@@ -15,6 +32,23 @@ export const APINavigation: TNavigation[] = [
     _id: "worlds",
     name: "Worlds",
     url: "/worlds",
+    submenu: [
+      {
+        _id: "aider",
+        name: "Aider",
+        url: "/worlds/aider",
+      },
+      {
+        _id: "societal",
+        name: "Societal",
+        url: "/worlds/societal",
+      },
+      {
+        _id: "bargain",
+        name: "Bargain",
+        url: "/worlds/bargain",
+      },
+    ],
   },
 ];
 export const APISocial: TSocialNavigation[] = [

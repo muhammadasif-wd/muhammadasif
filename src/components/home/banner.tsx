@@ -1,19 +1,31 @@
 "use client";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {Button} from "@nextui-org/button";
 import {useTheme} from "next-themes";
 
 import TextStroke from "@/hooks/text-stroke";
-import {APISocial} from "@/assets/api/navigation";
 import IconGithub from "@/assets/icons/github";
 import IconLinkedin from "@/assets/icons/linkedin";
 import {IconFacebook} from "@/assets/icons/facebook";
 import {IconWhatsapp} from "@/assets/icons/whatsapp";
+import {IBannerProps} from "@/types/landing.type";
+import SkeletonLoading from "@/shared/skeleton";
+import Alert from "@/shared/alert";
 
-const Banner = () => {
+const Banner = ({bannerData, bannerError}: IBannerProps) => {
   const {theme} = useTheme();
+
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (bannerData || bannerError) {
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+  }, [bannerData, bannerError]);
 
   return (
     <section className="grid lg:grid-cols-2 place-content-center lg:place-items-end place-items-center gap-y-10">
@@ -47,26 +59,41 @@ const Banner = () => {
           transform visionary ideas into tangible, cutting-edge software.`}
           </p>
         </article>
+
         <div className="flex gap-3 items-center font-bold mt-10">
-          {APISocial.map(({icon, _id, url}) => (
-            <Button
-              key={_id}
-              isIconOnly
-              as={Link}
-              className="border dark:text-light dark:hover:bg-white dark:hover:text-primary text-primary hover:bg-primary hover:text-light"
-              href={url}
-              radius="sm"
-              size="lg"
-              target="_blank"
-              variant="bordered"
-            >
-              {icon === "github" && <IconGithub className="w-6 h-6" />}
-              {icon === "linkedin" && <IconLinkedin className="w-6 h-6" />}
-              {icon === "facebook" && <IconFacebook className="w-6 h-6" />}
-              {icon === "whatsapp" && <IconWhatsapp className="w-6 h-6" />}
-            </Button>
-          ))}
+          {bannerData &&
+            bannerData?.map(({icon, _id, url}) =>
+              loading ? (
+                <div key={_id} className="w-fit">
+                  <SkeletonLoading skeleton={1} style="!w-12 !h-12 w-full rounded" />
+                </div>
+              ) : (
+                <Button
+                  key={_id}
+                  isIconOnly
+                  as={Link}
+                  className="border dark:text-light dark:hover:bg-white dark:hover:text-primary text-primary hover:bg-primary hover:text-light"
+                  href={url}
+                  radius="sm"
+                  size="lg"
+                  target="_blank"
+                  variant="bordered"
+                >
+                  {icon === "github" && <IconGithub className="w-6 h-6" />}
+                  {icon === "linkedin" && <IconLinkedin className="w-6 h-6" />}
+                  {icon === "facebook" && <IconFacebook className="w-6 h-6" />}
+                  {icon === "whatsapp" && <IconWhatsapp className="w-6 h-6" />}
+                </Button>
+              ),
+            )}
         </div>
+        {bannerError && (
+          <Alert
+            message={bannerError || "Something went wrong!"}
+            style="py-2 px-4 w-fit"
+            type="danger"
+          />
+        )}
       </div>
       <div className="lg:order-2 order-1 flex justify-center">
         <Image

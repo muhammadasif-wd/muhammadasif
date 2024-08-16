@@ -15,7 +15,6 @@ export type TNavigation = {
   name: string;
   url: string;
   submenu?: TSubmenuNavigation[];
-  social?: TSocialNavigation[];
 };
 
 export interface INavigationProps {
