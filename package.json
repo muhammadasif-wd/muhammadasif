@@ -42,6 +42,7 @@
     "@nextui-org/card": "^2.0.31",
     "@nextui-org/dropdown": "^2.1.26",
     "@nextui-org/image": "^2.0.29",
+    "@nextui-org/skeleton": "^2.0.31",
     "@nextui-org/system": "^2.2.2",
     "framer-motion": "^11.3.2",
     "next": "14.2.3",

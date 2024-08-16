@@ -18,6 +18,13 @@ export type TNavigation = {
   social?: TSocialNavigation[];
 };
 
-export type TNavigationProps = {
-  navigationData: TNavigation | null;
+export interface INavigationProps {
+  navigationData?: TNavigation[];
+  error?: string;
+  loading?: boolean;
+}
+export type TSkeleton = {
+  skeleton?: number;
+  layout?: string;
+  style?: string;
 };

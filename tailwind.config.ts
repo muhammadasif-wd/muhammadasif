@@ -44,10 +44,14 @@ const config: Config = {
     },
     extend: {
       colors: {
+        default: "#3f3f46",
         primary: "#000000",
         secondary: "#404040",
         light: "#FFFFFF",
-        error: "#ef4444",
+        danger: "#ef4444",
+        success: "#17c964",
+        warning: "#f5a524",
+        info: "#006FEE",
       },
     },
   },

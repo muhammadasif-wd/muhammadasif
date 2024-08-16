@@ -1,17 +1,43 @@
-import {useState} from "react";
+"use client";
+import {useEffect, useState} from "react";
 import Link from "next/link";
 import {Button} from "@nextui-org/button";
 import {motion} from "framer-motion";
 
-import {APINavigation} from "@/assets/api/navigation";
 import {IconDownload} from "@/assets/icons/download";
 import IconMenu from "@/assets/icons/menu";
 import IconClose from "@/assets/icons/close";
 import ThemeSwitcher from "@/app/theme-switcher";
+import {INavigationProps} from "@/types/navigation.type";
+import SkeletonLoading from "@/shared/skeleton";
+import Alert from "@/shared/alert";
 
-const Navigation = () => {
+const Navigation = ({navigationData, error}: INavigationProps) => {
+  const [loading, setLoading] = useState<boolean>(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+  useEffect(() => {
+    if (navigationData || error) {
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+  }, [navigationData, error]);
+
+  if (loading) {
+    return (
+      <div className="py-6 container">
+        <SkeletonLoading skeleton={1} style="h-14 w-full rounded" />
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="py-6 container">
+        <Alert message={error || "Something went wrong!"} style="py-2 px-4" type="danger" />
+      </div>
+    );
+  }
   const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
 
   return (
@@ -23,11 +49,12 @@ const Navigation = () => {
           </Link>
         </div>
         <div className="md:flex hidden gap-5 items-center font-bold">
-          {APINavigation.map((nav) => (
-            <Link key={nav._id} href={nav.url}>
-              <p className="font-bold capitalize">{nav.name}</p>
-            </Link>
-          ))}
+          {navigationData &&
+            navigationData?.map((nav) => (
+              <Link key={nav._id} href={nav.url}>
+                <p className="font-bold capitalize">{nav.name}</p>
+              </Link>
+            ))}
         </div>
         <div className="flex items-center gap-3">
           <div className="md:flex hidden">
@@ -75,11 +102,12 @@ const Navigation = () => {
                   <IconClose height={15} width={15} />
                 </Button>
               </div>
-              {APINavigation.map((nav) => (
-                <Button key={nav._id} as={Link} href={nav.url} radius="sm">
-                  {nav.name}
-                </Button>
-              ))}
+              {navigationData &&
+                navigationData?.map((nav) => (
+                  <Button key={nav._id} as={Link} href={nav.url} radius="sm">
+                    {nav.name}
+                  </Button>
+                ))}
               <Button
                 className="font-bold md:hidden flex bg-primary text-light dark:bg-light dark:text-primary"
                 color="primary"
