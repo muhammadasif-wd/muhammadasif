@@ -37,10 +37,10 @@ const Navigation = () => {
             return (
               <Dropdown
                 key={_id}
-                className={`w-full duration-300 ${pathname === url ? "text-secondary dark:text-light font-bold" : ""} ${selectedSubmenu}`}
-                link={url}
-                name={name}
-                submenu={submenu ?? []}
+                additionalClassName={`w-full duration-300 ${pathname === url ? "text-secondary dark:text-light font-bold" : ""} ${selectedSubmenu}`}
+                label={name}
+                linkUrl={url}
+                submenuItems={submenu ?? []}
               />
             );
           })}
@@ -103,11 +103,10 @@ const Navigation = () => {
                   return (
                     <Dropdown
                       key={_id}
-                      className={`hover:text-secondary duration-300 !bg-white ${pathname === url ? "text-secondary font-bold" : ""} ${selectedSubmenu}`}
-                      link={url}
-                      name={name}
-                      submenu={submenu ?? []}
-                      trigger={undefined}
+                      additionalClassName={`w-full duration-300 ${pathname === url ? "text-secondary dark:text-light font-bold" : ""} ${selectedSubmenu}`}
+                      label={name}
+                      linkUrl={url}
+                      submenuItems={submenu ?? []}
                     />
                   );
                 })}
