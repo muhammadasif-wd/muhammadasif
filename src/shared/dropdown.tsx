@@ -73,13 +73,13 @@ function Dropdown({
       {isOpen && (
         <motion.div
           animate="open"
-          className={`space-y-1 flex-col block z-50 origin-top-right absolute left-0 paragraph rounded-md shadow-xl !bg-white ${submenu?.length > 0 ? "border-2 border-dark" : ""}`}
+          className={`space-y-1 flex-col block z-50 origin-top-right absolute left-0 paragraph rounded-md shadow-xl bg-white dark:text-primary ${submenu?.length > 0 ? "border-2 border-dark" : ""}`}
           initial="closed"
           transition={{duration: 0.2}}
           variants={variants}
         >
           {submenu?.map((data: TSubmenuNavigation) => {
-            const selectedSubmenu = data?.url === pathname ? "bg-secondary text-white" : "bg-white";
+            const selectedSubmenu = data?.url === pathname ? "bg-primary text-white" : "";
 
             return (
               <Link
@@ -89,9 +89,7 @@ function Dropdown({
                 role="menuitem"
                 onClick={() => setIsOpen(!isOpen)}
               >
-                <p
-                  className={`${selectedSubmenu} hover:!bg-secondary hover:text-white duration-200 px-2 py-1.5 rounded`}
-                >
+                <p className={`${selectedSubmenu} border duration-200 px-2 py-1.5 rounded`}>
                   {data?.name}
                 </p>
               </Link>

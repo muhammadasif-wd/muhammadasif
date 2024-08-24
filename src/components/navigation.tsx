@@ -31,13 +31,13 @@ const Navigation = () => {
             const selectedSubmenu = submenu?.some(
               (data: TSubmenuNavigation) => data?.url === pathname,
             )
-              ? "text-secondary font-bold"
+              ? "text-secondary dark:text-light font-bold"
               : "";
 
             return (
               <Dropdown
                 key={_id}
-                className={`w-full duration-300 !bg-white ${pathname === url ? "text-secondary font-bold" : ""} ${selectedSubmenu}`}
+                className={`w-full duration-300 ${pathname === url ? "text-secondary dark:text-light font-bold" : ""} ${selectedSubmenu}`}
                 link={url}
                 name={name}
                 submenu={submenu ?? []}

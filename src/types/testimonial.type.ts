@@ -1,6 +1,7 @@
 export type TTestimonial = {
+  _id: string;
   name: string;
-  designation: string;
-  details: string;
+  position: string;
+  review: string;
   img: string;
 };

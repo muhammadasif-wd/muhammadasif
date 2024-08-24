@@ -1,4 +1,5 @@
 export type TSkills = {
-  img: string;
+  _id: string;
+  icon: string;
   name: string;
 };

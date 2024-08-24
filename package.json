@@ -38,6 +38,7 @@
     }
   },
   "dependencies": {
+    "@iconify/react": "^5.0.2",
     "@nextui-org/button": "^2.0.34",
     "@nextui-org/card": "^2.0.31",
     "@nextui-org/dropdown": "^2.1.26",

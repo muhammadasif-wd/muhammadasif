@@ -1,7 +1,8 @@
 export type TExperience = {
-  img: string;
-  name: string;
+  _id: string;
+  title: string;
+  icon: string;
   date: string;
   details: string;
-  link: string;
+  url: string;
 };
