@@ -6,10 +6,6 @@ import {Button} from "@nextui-org/button";
 import {useTheme} from "next-themes";
 
 import TextStroke from "@/hooks/text-stroke";
-import IconGithub from "@/assets/icons/github";
-import IconLinkedin from "@/assets/icons/linkedin";
-import {IconFacebook} from "@/assets/icons/facebook";
-import {IconWhatsapp} from "@/assets/icons/whatsapp";
 import {IBannerProps} from "@/types/landing.type";
 import SkeletonLoading from "@/shared/skeleton";
 import Alert from "@/shared/alert";
@@ -72,17 +68,14 @@ const Banner = ({bannerData, bannerError}: IBannerProps) => {
                   key={_id}
                   isIconOnly
                   as={Link}
-                  className="border dark:text-light dark:hover:bg-white dark:hover:text-primary text-primary hover:bg-primary hover:text-light"
+                  className="border bg-white hover:-translate-y-1"
                   href={url}
                   radius="sm"
                   size="lg"
                   target="_blank"
                   variant="bordered"
                 >
-                  {icon === "github" && <IconGithub className="w-6 h-6" />}
-                  {icon === "linkedin" && <IconLinkedin className="w-6 h-6" />}
-                  {icon === "facebook" && <IconFacebook className="w-6 h-6" />}
-                  {icon === "whatsapp" && <IconWhatsapp className="w-6 h-6" />}
+                  <Image alt={icon} height={24} src={icon} width={24} />
                 </Button>
               ),
             )}
