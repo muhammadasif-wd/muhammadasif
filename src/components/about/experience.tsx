@@ -4,34 +4,35 @@ import Link from "next/link";
 
 import {TExperience} from "@/types/experience.type";
 import Alert from "@/shared/alert";
-import SkeletonLoading from "@/shared/skeleton";
 
 async function getData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/experience`, {
-    method: "GET",
-    headers: {
-      "x-api-key": process.env.NEXT_PUBLIC_X_API_KEY || "",
-    },
-  });
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/experience`, {
+      method: "GET",
+      headers: {
+        "x-api-key": process.env.NEXT_PUBLIC_X_API_KEY || "",
+      },
+    });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
-
-  return res.json();
 }
 
 const Experience = async () => {
   let data;
   let error;
-  let loading = true;
 
   try {
     data = await getData();
   } catch (err) {
     error = (err as Error).message;
-  } finally {
-    loading = false;
   }
 
   return (
@@ -43,38 +44,29 @@ const Experience = async () => {
       </article>
       <div className="py-10">
         <article className="text-light space-y-8">
-          {data?.data?.map(({_id, date, title, details, icon, url}: TExperience) =>
-            loading ? (
-              <div key={_id} className="w-full">
-                <SkeletonLoading
-                  skeleton={1}
-                  style="w-full border border-zinc-500 rounded-[10px] px-6 py-[30px]"
-                />
-              </div>
-            ) : (
-              <div
-                key={_id}
-                className="hover:bg-zinc-800 hover:border-zinc-800 duration-300 ease-in-out border border-zinc-500 rounded-[10px] px-6 py-[30px]"
-              >
-                <div className="flex flex-wrap gap-y-5 justify-between items-center">
-                  <div className="flex items-center gap-7">
-                    <Image
-                      alt={title}
-                      className="bg-light p-1 rounded"
-                      height={32}
-                      src={icon}
-                      width={32}
-                    />
-                    <Link href={url ?? ""}>
-                      <h2 className="text-xl font-bold">{title}</h2>
-                    </Link>
-                  </div>
-                  <p className="text-zinc-300">{date}</p>
+          {data?.data?.map(({_id, date, title, details, icon, url}: TExperience) => (
+            <div
+              key={_id}
+              className="hover:bg-zinc-800 hover:border-zinc-800 duration-300 ease-in-out border border-zinc-500 rounded-[10px] px-6 py-[30px]"
+            >
+              <div className="flex flex-wrap gap-y-5 justify-between items-center">
+                <div className="flex items-center gap-7">
+                  <Image
+                    alt={title}
+                    className="bg-light p-1 rounded"
+                    height={32}
+                    src={icon}
+                    width={32}
+                  />
+                  <Link href={url ?? ""}>
+                    <h2 className="text-xl font-bold">{title}</h2>
+                  </Link>
                 </div>
-                <p className="text-zinc-300 pt-7">{details}</p>
+                <p className="text-zinc-300">{date}</p>
               </div>
-            ),
-          )}
+              <p className="text-zinc-300 pt-7">{details}</p>
+            </div>
+          ))}
           {error && (
             <Alert
               message={error || "Something went wrong!"}

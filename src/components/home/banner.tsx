@@ -1,5 +1,4 @@
 "use client";
-import React, {useEffect, useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {Button} from "@nextui-org/button";
@@ -7,21 +6,10 @@ import {useTheme} from "next-themes";
 
 import TextStroke from "@/hooks/text-stroke";
 import {IBannerProps} from "@/types/landing.type";
-import SkeletonLoading from "@/shared/skeleton";
 import Alert from "@/shared/alert";
 
 const Banner = ({bannerData, bannerError}: IBannerProps) => {
   const {theme} = useTheme();
-
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    if (bannerData || bannerError) {
-      setLoading(false);
-    } else {
-      setLoading(true);
-    }
-  }, [bannerData, bannerError]);
 
   return (
     <section className="grid lg:grid-cols-2 place-content-center lg:place-items-end place-items-center gap-y-10">
@@ -58,27 +46,21 @@ const Banner = ({bannerData, bannerError}: IBannerProps) => {
 
         <div className="flex gap-3 items-center font-bold mt-10">
           {bannerData &&
-            bannerData?.map(({icon, _id, url}) =>
-              loading ? (
-                <div key={_id} className="w-fit">
-                  <SkeletonLoading skeleton={1} style="!w-12 !h-12 w-full rounded" />
-                </div>
-              ) : (
-                <Button
-                  key={_id}
-                  isIconOnly
-                  as={Link}
-                  className="border bg-white hover:-translate-y-1"
-                  href={url}
-                  radius="sm"
-                  size="lg"
-                  target="_blank"
-                  variant="bordered"
-                >
-                  <Image alt={icon} height={24} src={icon} width={24} />
-                </Button>
-              ),
-            )}
+            bannerData?.map(({icon, _id, url}) => (
+              <Button
+                key={_id}
+                isIconOnly
+                as={Link}
+                className="border bg-white hover:-translate-y-1"
+                href={url}
+                radius="sm"
+                size="lg"
+                target="_blank"
+                variant="bordered"
+              >
+                <Image alt={icon} height={24} src={icon} width={24} />
+              </Button>
+            ))}
         </div>
         {bannerError && (
           <Alert

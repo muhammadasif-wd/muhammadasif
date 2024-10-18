@@ -3,3 +3,15 @@ export type TSkills = {
   icon: string;
   name: string;
 };
+
+export type TMeta = {
+  limit: number;
+  page: number;
+  total: number;
+};
+
+export interface ISkillsProps {
+  skillsData?: TSkills[];
+  meta?: TMeta;
+  skillsError?: string;
+}

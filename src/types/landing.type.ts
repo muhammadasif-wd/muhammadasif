@@ -8,5 +8,4 @@ export type TBanner = {
 export interface IBannerProps {
   bannerData?: TBanner[];
   bannerError?: string;
-  bannerLoading?: boolean;
 }
