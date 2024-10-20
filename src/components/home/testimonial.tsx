@@ -44,8 +44,8 @@ const Testimonial = async () => {
       </article>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7 mt-10">
         {data?.data?.map(({_id, name, review, position, img}: TTestimonial) => (
-          <Card key={_id} className="group">
-            <CardBody className="relative p-10 dark:group-hover:bg-light group-hover:bg-primary group-hover:text-light dark:group-hover:text-primary h-full">
+          <Card key={_id} className="group" shadow="sm">
+            <CardBody className="relative p-10 bg-light dark:bg-secondary/30 dark:group-hover:bg-light group-hover:bg-primary group-hover:text-light dark:group-hover:text-primary h-full">
               <div className="relative w-24 h-24 mx-auto">
                 <Image
                   alt={name}
