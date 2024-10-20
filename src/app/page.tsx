@@ -50,7 +50,7 @@ const Page = async () => {
       </div>
       <div className="container space-y-20">
         <Testimonial />
-        <Contact />
+        <Contact contactData={bannerData?.data} contactError={bannerError} />
       </div>
     </div>
   );
