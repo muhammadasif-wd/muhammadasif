@@ -1,5 +1,5 @@
-import {Icon} from "@iconify/react";
 import {NextPage} from "next";
+import Image from "next/image";
 
 import Alert from "@/shared/alert";
 import {ISkillsProps, TSkills} from "@/types/skills.type";
@@ -42,14 +42,20 @@ const Skills: NextPage<ISkillsProps> = async () => {
       <h1 className="text-4xl leading-relaxed text-center">
         My <span className="font-extrabold">Skills</span>
       </h1>
-      <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3 md:gap-14 mt-10">
+      <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3 md:gap-14 mt-10 max-h-96 scrollbar-thin pr-1 overflow-auto">
         {skillsData?.map(({_id, icon, name}: TSkills) => (
           <div
             key={_id}
             className="border-2 rounded border-primary dark:border-zinc-500 p-6 dark:hover:bg-light hover:bg-primary dark:hover:text-primary hover:text-light duration-300 ease-in-out"
           >
             <div className="flex justify-center">
-              <Icon height={40} icon={icon ?? ""} width={40} />
+              <Image
+                alt={name}
+                className="object-contain bg-white rounded p-1 w-16 h-16 border"
+                height={64}
+                src={icon}
+                width={64}
+              />
             </div>
             <p className="text-center pt-5">{name}</p>
           </div>
