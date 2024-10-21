@@ -81,9 +81,9 @@ const Contact = ({contactData, contactError}: IContactProps) => {
           />
           {submitStatus.error.length >= 1 &&
             submitStatus?.error?.map(
-              (error: {path: string; message: string}) =>
+              (error: {path: string; message: string}, index) =>
                 error.path === "name" && (
-                  <span key={error.path} className="text-danger">
+                  <span key={index} className="text-danger">
                     {error.message}
                   </span>
                 ),
@@ -100,9 +100,9 @@ const Contact = ({contactData, contactError}: IContactProps) => {
           />
           {submitStatus.error.length >= 1 &&
             submitStatus?.error?.map(
-              (error: {path: string; message: string}) =>
+              (error: {path: string; message: string}, index) =>
                 error.path === "email" && (
-                  <span key={error.path} className="text-danger">
+                  <span key={index} className="text-danger">
                     {error.message}
                   </span>
                 ),
@@ -118,9 +118,9 @@ const Contact = ({contactData, contactError}: IContactProps) => {
           />
           {submitStatus.error.length >= 1 &&
             submitStatus?.error?.map(
-              (error: {path: string; message: string}) =>
+              (error: {path: string; message: string}, index) =>
                 error.path === "number" && (
-                  <span key={error.path} className="text-danger">
+                  <span key={index} className="text-danger">
                     {error.message}
                   </span>
                 ),
@@ -137,9 +137,9 @@ const Contact = ({contactData, contactError}: IContactProps) => {
           />
           {submitStatus.error.length >= 1 &&
             submitStatus?.error?.map(
-              (error: {path: string; message: string}) =>
+              (error: {path: string; message: string}, index) =>
                 error.path === "message" && (
-                  <span key={error.path} className="text-danger">
+                  <span key={index} className="text-danger">
                     {error.message}
                   </span>
                 ),

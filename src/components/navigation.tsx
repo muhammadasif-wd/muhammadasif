@@ -49,7 +49,7 @@ const Navigation = () => {
                 <DropdownMenu key={_id} aria-label={name ?? "Dropdown"}>
                   {(submenu ?? []).map(({name, url, _id}: TSubmenuNavigation) => (
                     <DropdownItem
-                      key={name + _id}
+                      key={_id}
                       as={Link}
                       className={
                         url === pathname
@@ -65,6 +65,7 @@ const Navigation = () => {
               </Dropdown>
             ) : (
               <Button
+                key={_id}
                 as={Link}
                 className={url === pathname ? "bg-secondary hover:bg-secondary text-light" : ""}
                 href={url}

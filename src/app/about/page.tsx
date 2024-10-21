@@ -6,8 +6,66 @@ import Achievements from "./achievements";
 import Gallery from "./gallery";
 
 import NewsLatter from "@/components/news-latter";
+import Alert from "@/shared/alert";
 
-const About = () => {
+interface IAbout {
+  id: string;
+  firstContent: string;
+  middleContent: string;
+  lastContent: string;
+}
+
+async function getData() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/about/me`, {
+      method: "GET",
+      headers: {
+        "x-api-key": process.env.NEXT_PUBLIC_X_API_KEY || "",
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+async function getAchievementData() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/about/achievement`, {
+      method: "GET",
+      headers: {
+        "x-api-key": process.env.NEXT_PUBLIC_X_API_KEY || "",
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+const About = async () => {
+  let data;
+  let error;
+  let achievementData;
+
+  try {
+    data = await getData();
+    achievementData = await getAchievementData();
+  } catch (err) {
+    error = (err as Error).message;
+  }
+
   return (
     <section className="space-y-20">
       <div className="container">
@@ -24,17 +82,28 @@ const About = () => {
               <h1 className="text-4xl leading-relaxed">
                 About <span className="font-extrabold">Me</span>
               </h1>
-              <article className="space-y-5 mt-10 leading-relaxed text-zinc-500">
-                <p>{`I'm a passionate, self-proclaimed designer who specializes in full stack development (React.js & Node.js). I am very enthusiastic about bringing the technical and visual aspects of digital products to life. User experience, pixel perfect design, and writing clear, readable, highly performant code matters to me.`}</p>
-                <p>{`I began my journey as a web developer in 2021, and since then, I've continued to grow and evolve as a developer, taking on new challenges and learning the latest technologies along the way. Now, in my early thirties, 3 years after starting my web development journey, I'm building cutting-edge web applications using modern technologies such as Next.js, TypeScript, Nestjs, Tailwindcss, Supabase and much more.`}</p>
-                <p>{`When I'm not in full-on developer mode, you can find me hovering around on whatsapp, linkedin or facebook, witnessing the journey of early startups or enjoying some free time. You can follow me on linkedin where I share tech-related bites and build in public, or you can follow me on GitHub.`}</p>
-              </article>
+              {data?.data.map(({firstContent, lastContent, middleContent, id}: IAbout) => {
+                return (
+                  <article key={id} className="space-y-5 mt-10 leading-relaxed text-zinc-500">
+                    <p>{firstContent}</p>
+                    <p>{middleContent}</p>
+                    <p>{lastContent}</p>
+                  </article>
+                );
+              })}
+              {error && (
+                <Alert
+                  message={error || "Something went wrong!"}
+                  style="py-2 px-4 w-fit"
+                  type="danger"
+                />
+              )}
             </article>
           </div>
         </div>
       </div>
       <div className="bg-primary py-20">
-        <Achievements />
+        <Achievements data={achievementData?.data} />
       </div>
       <div className="container">
         <Events />

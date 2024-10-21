@@ -1,5 +1,5 @@
 export type TAchievement = {
+  id: string;
   name: string;
-  count: number;
-  sign: string;
+  value: string;
 };
