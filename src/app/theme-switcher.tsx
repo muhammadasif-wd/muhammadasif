@@ -29,7 +29,11 @@ export default function ThemeSwitcher(): ReactNode {
           {theme === "light" ? <IconSun /> : <IconMoon />}
         </Button>
       </DropdownTrigger>
-      <DropdownMenu aria-label="Dropdown menu with themes" variant="flat">
+      <DropdownMenu
+        aria-label="Dropdown menu with themes"
+        className="bg-light dark:bg-secondary rounded-xl"
+        variant="flat"
+      >
         <DropdownItem
           key="dark"
           className={theme === "dark" ? "active" : ""}

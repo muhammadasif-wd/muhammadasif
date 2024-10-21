@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import {useState} from "react";
 import Link from "next/link";
 import {Button} from "@nextui-org/button";
 import {motion} from "framer-motion";
 import {usePathname} from "next/navigation";
+import {Dropdown, DropdownItem, DropdownMenu, DropdownTrigger} from "@nextui-org/dropdown";
 
-import Dropdown from "@/shared/dropdown";
 import {IconDownload} from "@/assets/icons/download";
 import IconMenu from "@/assets/icons/menu";
 import IconClose from "@/assets/icons/close";
@@ -31,17 +32,47 @@ const Navigation = () => {
             const selectedSubmenu = submenu?.some(
               (data: TSubmenuNavigation) => data?.url === pathname,
             )
-              ? "text-secondary dark:text-light font-bold"
+              ? "bg-secondary hover:bg-secondary text-light hover:text-light"
               : "";
 
-            return (
+            return (submenu ?? []).length > 0 ? (
               <Dropdown
                 key={_id}
-                additionalClassName={`w-full duration-300 ${pathname === url ? "text-secondary dark:text-light font-bold" : ""} ${selectedSubmenu}`}
-                label={name}
-                linkUrl={url}
-                submenuItems={submenu ?? []}
-              />
+                className="dark:bg-secondary/30 backdrop-blur-sm"
+                placement="bottom-start"
+              >
+                <DropdownTrigger>
+                  <Button className={selectedSubmenu} size="sm" variant="light">
+                    {name}
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu key={_id} aria-label={name ?? "Dropdown"}>
+                  {(submenu ?? []).map(({name, url, _id}: TSubmenuNavigation) => (
+                    <DropdownItem
+                      key={name + _id}
+                      as={Link}
+                      className={
+                        url === pathname
+                          ? "bg-secondary hover:bg-secondary text-light hover:text-light"
+                          : "hover:text-light"
+                      }
+                      href={url}
+                    >
+                      {name}
+                    </DropdownItem>
+                  ))}
+                </DropdownMenu>
+              </Dropdown>
+            ) : (
+              <Button
+                as={Link}
+                className={url === pathname ? "bg-secondary hover:bg-secondary text-light" : ""}
+                href={url}
+                size="sm"
+                variant="light"
+              >
+                {name}
+              </Button>
             );
           })}
         </div>
@@ -71,7 +102,7 @@ const Navigation = () => {
         <>
           <motion.div
             animate={{x: 0}}
-            className="fixed top-0 right-0 w-3/4 h-full dark:bg-primary bg-white shadow-lg z-50 md:hidden"
+            className="fixed top-0 right-0 w-56 h-full dark:bg-primary bg-white shadow-lg z-50 md:hidden"
             exit={{x: "100%"}}
             initial={{x: "100%"}}
             transition={{type: "spring", stiffness: 300, damping: 30, mass: 1}}
@@ -92,22 +123,54 @@ const Navigation = () => {
                 </Button>
               </div>
 
-              <div className="flex flex-col py-5 bg-white">
+              <div className="flex flex-col gap-1 py-10">
                 {APINavigation.map(({submenu, url, name, _id}: TNavigation) => {
                   const selectedSubmenu = submenu?.some(
                     (data: TSubmenuNavigation) => data?.url === pathname,
                   )
-                    ? "text-secondary font-bold"
+                    ? "bg-secondary hover:bg-secondary text-light hover:text-light"
                     : "";
 
-                  return (
+                  return (submenu ?? []).length > 0 ? (
                     <Dropdown
                       key={_id}
-                      additionalClassName={`w-full duration-300 ${pathname === url ? "text-secondary dark:text-light font-bold" : ""} ${selectedSubmenu}`}
-                      label={name}
-                      linkUrl={url}
-                      submenuItems={submenu ?? []}
-                    />
+                      className="dark:bg-secondary bg-white"
+                      placement="bottom-start"
+                    >
+                      <DropdownTrigger>
+                        <Button className={selectedSubmenu} size="sm" variant="light">
+                          {name}
+                        </Button>
+                      </DropdownTrigger>
+                      <DropdownMenu key={_id} aria-label={name ?? "Dropdown"}>
+                        {(submenu ?? []).map(({name, url, _id}: TSubmenuNavigation) => (
+                          <DropdownItem
+                            key={name + _id}
+                            as={Link}
+                            className={
+                              url === pathname
+                                ? "bg-secondary hover:bg-secondary text-light hover:text-light"
+                                : "hover:text-light"
+                            }
+                            href={url}
+                          >
+                            {name}
+                          </DropdownItem>
+                        ))}
+                      </DropdownMenu>
+                    </Dropdown>
+                  ) : (
+                    <Button
+                      as={Link}
+                      className={
+                        url === pathname ? "bg-secondary hover:bg-secondary text-light" : ""
+                      }
+                      href={url}
+                      size="sm"
+                      variant="light"
+                    >
+                      {name}
+                    </Button>
                   );
                 })}
               </div>
