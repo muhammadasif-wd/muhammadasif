@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import Events from "./events";
 import Achievements from "./achievements";
-import HelpCenter from "./help-center";
+import Gallery from "./gallery";
 
 import NewsLatter from "@/components/news-latter";
 
@@ -40,7 +40,7 @@ const About = () => {
         <Events />
       </div>
       <div className="bg-primary py-20">
-        <HelpCenter />
+        <Gallery />
       </div>
       <div>
         <NewsLatter />
