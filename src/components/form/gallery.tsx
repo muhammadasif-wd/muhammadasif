@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
 "use client";
-import React, {useState, useCallback} from "react";
+import React, {useState, useCallback, useEffect} from "react";
 import {Button} from "@nextui-org/button";
 import {Image} from "@nextui-org/image";
 import {NextPage} from "next";
+import {Pagination} from "@nextui-org/pagination";
 
 import {IGallery} from "@/app/about/gallery/page";
 
@@ -93,6 +94,45 @@ const FormGallery: NextPage<Props> = ({data}) => {
       setIsLoading(false);
     }
   };
+  const [currentPage, setCurrentPage] = useState(1);
+  const [paginationData, setPaginationData] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
+  const itemsPerPage = 10;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/gallery?page=${currentPage}&limit=${itemsPerPage}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "x-api-key": process.env.NEXT_PUBLIC_X_API_KEY || "",
+            },
+          },
+        );
+        const result = await response.json();
+
+        if (result.success) {
+          setPaginationData(result.data);
+          setTotalPages(Math.ceil(result.meta.total / itemsPerPage));
+        } else {
+          // Handle error
+        }
+      } catch (error) {
+        // Handle error
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [currentPage]);
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div>
@@ -157,42 +197,46 @@ const FormGallery: NextPage<Props> = ({data}) => {
         </div>
       </form>
       <div className="md:grid-cols-2 sm:gap-6 md:gap-8 lg:gap-12 grid gap-4 py-12">
-        {(submitStatus.data && submitStatus.data.length > 0 ? submitStatus.data : data)?.map(
-          ({id, title, img, description, tags}) => {
-            const tagsData = tags.split(" ");
+        {(submitStatus.data && submitStatus.data.length > 0
+          ? submitStatus.data
+          : data && data.length > 0
+            ? data
+            : paginationData
+        )?.map(({id, title, img, description, tags}) => {
+          const tagsData = tags.split(" ");
 
-            return (
-              <div key={id} className="group focus:outline-none flex flex-col w-full h-auto">
-                <Image
-                  isZoomed
-                  alt={title}
-                  className="filter grayscale group-hover:grayscale-0 w-full h-auto transition-all duration-500 cursor-pointer"
-                  src={img ?? ""}
-                />
-                <div className="pt-4">
-                  <h3 className="relative inline-block font-medium text-lg text-black before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-success before:transition before:origin-left before:scale-x-0 group-hover:before:scale-x-100 dark:text-white">
-                    {title}
-                  </h3>
-                  <p className="dark:text-light/70 text-secondary mt-1">{description}</p>
+          return (
+            <div key={id} className="group focus:outline-none flex flex-col w-full h-auto">
+              <Image
+                isZoomed
+                alt={title}
+                className="filter grayscale group-hover:grayscale-0 w-full h-auto transition-all duration-500 cursor-pointer"
+                src={img ?? ""}
+              />
+              <div className="pt-4">
+                <h3 className="relative inline-block font-medium text-lg text-black before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-success before:transition before:origin-left before:scale-x-0 group-hover:before:scale-x-100 dark:text-white">
+                  {title}
+                </h3>
+                <p className="dark:text-light/70 text-secondary mt-1">{description}</p>
 
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {tagsData.map((tag, index) => {
-                      return (
-                        <span
-                          key={index}
-                          className="py-1.5 px-3 bg-white text-secondary dark:text-light/70 border border-gray-200 text-xs sm:text-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700"
-                        >
-                          {tag}
-                        </span>
-                      );
-                    })}
-                  </div>
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {tagsData.map((tag, index) => {
+                    return (
+                      <span
+                        key={index}
+                        className="py-1.5 px-3 bg-white text-secondary dark:text-light/70 border border-gray-200 text-xs sm:text-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700"
+                      >
+                        {tag}
+                      </span>
+                    );
+                  })}
                 </div>
               </div>
-            );
-          },
-        )}
+            </div>
+          );
+        })}
       </div>
+      <Pagination showControls initialPage={1} total={totalPages} onChange={handlePageChange} />
     </div>
   );
 };
