@@ -6,6 +6,7 @@ import {Button} from "@nextui-org/button";
 import {motion} from "framer-motion";
 import {usePathname} from "next/navigation";
 import {Dropdown, DropdownItem, DropdownMenu, DropdownTrigger} from "@nextui-org/dropdown";
+import {Icon} from "@iconify/react";
 
 import {IconDownload} from "@/assets/icons/download";
 import IconMenu from "@/assets/icons/menu";
@@ -20,14 +21,14 @@ const Navigation = () => {
   const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
 
   return (
-    <section className="py-6 container">
+    <section className="container py-6">
       <div className="flex items-center justify-between py-2">
         <div>
           <Link className="font-bold uppercase" href={"/"}>
             Asif
           </Link>
         </div>
-        <div className="md:flex hidden gap-5 items-center">
+        <div className="md:flex items-center hidden gap-5">
           {APINavigation.map(({submenu, url, name, _id}: TNavigation) => {
             const selectedSubmenu = submenu?.some(
               (data: TSubmenuNavigation) => data?.url === pathname,
@@ -44,6 +45,7 @@ const Navigation = () => {
                 <DropdownTrigger>
                   <Button className={selectedSubmenu} size="sm" variant="light">
                     {name}
+                    <Icon height={16} icon="mingcute:down-fill" width={16} />
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu key={_id} aria-label={name ?? "Dropdown"}>
@@ -82,14 +84,14 @@ const Navigation = () => {
             <ThemeSwitcher />
           </div>
           <Button
-            className="font-bold md:flex hidden bg-primary text-light dark:bg-light dark:text-primary"
+            className="md:flex bg-primary text-light dark:bg-light dark:text-primary hidden font-bold"
             radius="sm"
           >
             Resume <IconDownload height={15} width={15} />
           </Button>
           <Button
             isIconOnly
-            className="font-bold md:hidden flex text-primary dark:text-light"
+            className="md:hidden text-primary dark:text-light flex font-bold"
             color="primary"
             radius="sm"
             variant="light"
@@ -103,19 +105,19 @@ const Navigation = () => {
         <>
           <motion.div
             animate={{x: 0}}
-            className="fixed top-0 right-0 w-56 h-full dark:bg-primary bg-white shadow-lg z-50 md:hidden"
+            className="dark:bg-primary md:hidden fixed top-0 right-0 z-50 w-56 h-full bg-white shadow-lg"
             exit={{x: "100%"}}
             initial={{x: "100%"}}
             transition={{type: "spring", stiffness: 300, damping: 30, mass: 1}}
           >
-            <div className="flex flex-col space-y-1 container my-5">
-              <div className="md:hidden flex justify-between items-center">
+            <div className="container flex flex-col my-5 space-y-1">
+              <div className="md:hidden flex items-center justify-between">
                 <div className="md:hidden flex">
                   <ThemeSwitcher />
                 </div>
                 <Button
                   isIconOnly
-                  className="font-bold bg-primary text-light dark:bg-light dark:text-primary"
+                  className="bg-primary text-light dark:bg-light dark:text-primary font-bold"
                   radius="sm"
                   size="sm"
                   onClick={toggleDrawer}
@@ -140,7 +142,7 @@ const Navigation = () => {
                     >
                       <DropdownTrigger>
                         <Button className={selectedSubmenu} size="sm" variant="light">
-                          {name}
+                          {name} <Icon height={16} icon="mingcute:down-fill" width={16} />
                         </Button>
                       </DropdownTrigger>
                       <DropdownMenu key={_id} aria-label={name ?? "Dropdown"}>
@@ -176,7 +178,7 @@ const Navigation = () => {
                 })}
               </div>
               <Button
-                className="font-bold md:hidden flex bg-primary text-light dark:bg-light dark:text-primary"
+                className="md:hidden bg-primary text-light dark:bg-light dark:text-primary flex font-bold"
                 color="primary"
                 radius="sm"
               >
@@ -186,7 +188,7 @@ const Navigation = () => {
           </motion.div>
           <motion.div
             animate={{opacity: 1}}
-            className="fixed inset-0 bg-primary bg-opacity-50 z-40"
+            className="bg-primary fixed inset-0 z-40 bg-opacity-50"
             exit={{opacity: 0}}
             initial={{opacity: 0}}
             transition={{duration: 0.5, ease: "easeInOut"}}
