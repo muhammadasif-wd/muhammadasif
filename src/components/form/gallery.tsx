@@ -210,7 +210,7 @@ const FormGallery: NextPage<Props> = ({data}) => {
               <Image
                 isZoomed
                 alt={title}
-                className="filter grayscale group-hover:grayscale-0 w-full h-auto transition-all duration-500 cursor-pointer"
+                className="filter grayscale group-hover:grayscale-0 w-full h-auto transition-all duration-500 cursor-pointer object-cover object-center"
                 src={img ?? ""}
               />
               <div className="pt-4">

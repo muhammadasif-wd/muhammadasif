@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import {useTheme} from "next-themes";
 import {Button} from "@nextui-org/button";
+import Link from "next/link";
 
 import TextStroke from "@/hooks/text-stroke";
 const Gallery = () => {
@@ -37,7 +38,13 @@ const Gallery = () => {
               <p>{`I invite you to explore my gallery and immerse yourself in my visual stories. Each image reflects my dedication to capturing the world and the intersection of art and technology. Enjoy your journey!`}</p>
             </article>
           </article>
-          <Button className="font-bold bg-light text-primary mt-5" radius="sm" size="lg">
+          <Button
+            as={Link}
+            className="font-bold bg-light text-primary mt-5"
+            href="/about/gallery"
+            radius="sm"
+            size="lg"
+          >
             Get the Gallery
           </Button>
         </div>

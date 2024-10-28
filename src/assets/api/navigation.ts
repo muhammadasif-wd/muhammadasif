@@ -8,7 +8,7 @@ export const APINavigation: TNavigation[] = [
     submenu: [
       {
         _id: "about",
-        name: "About",
+        name: "About Me",
         url: "/about",
       },
       {
@@ -32,23 +32,7 @@ export const APINavigation: TNavigation[] = [
     _id: "worlds",
     name: "Worlds",
     url: "/worlds",
-    submenu: [
-      {
-        _id: "aider",
-        name: "Aider",
-        url: "/worlds/aider",
-      },
-      {
-        _id: "societal",
-        name: "Societal",
-        url: "/worlds/societal",
-      },
-      {
-        _id: "bargain",
-        name: "Bargain",
-        url: "/worlds/bargain",
-      },
-    ],
+    submenu: [],
   },
 ];
 export const APISocial: TSocialNavigation[] = [
