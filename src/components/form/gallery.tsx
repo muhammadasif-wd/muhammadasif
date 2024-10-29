@@ -209,7 +209,7 @@ const FormGallery: NextPage<Props> = ({data}) => {
             <div key={id} className="group focus:outline-none flex flex-col w-full h-auto">
               <Image
                 alt={title}
-                className="filter grayscale group-hover:grayscale-0 w-full h-auto transition-all duration-500 cursor-pointer object-cover object-center"
+                className="rounded-xl filter grayscale group-hover:grayscale-0 w-full h-auto transition-all duration-500 cursor-pointer object-cover object-center"
                 height={500}
                 src={img ?? ""}
                 width={800}

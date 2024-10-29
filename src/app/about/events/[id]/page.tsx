@@ -1,6 +1,12 @@
+import {Icon} from "@iconify/react";
+import {Button} from "@nextui-org/button";
+import {Popover, PopoverContent, PopoverTrigger} from "@nextui-org/popover";
 import {NextPage} from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+import {IconFacebook} from "@/assets/icons/facebook";
+import IconLinkedin from "@/assets/icons/linkedin";
 
 interface Props {}
 
@@ -146,95 +152,54 @@ const Page: NextPage<Props> = () => {
                 </div>
 
                 <div className="flex justify-end items-center gap-x-1.5">
-                  <div className="hs-tooltip inline-block">
-                    <button
-                      className="hs-tooltip-toggle gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200 flex items-center text-sm text-gray-500"
-                      type="button"
-                    >
-                      <svg
-                        className="shrink-0 size-4"
-                        fill="none"
-                        height="24"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        width="24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                      </svg>
-                      875
-                      <span
-                        className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible dark:bg-black absolute z-10 invisible inline-block px-2 py-1 text-xs font-medium text-white transition-opacity bg-gray-900 rounded shadow-sm opacity-0"
-                        role="tooltip"
-                      >
-                        Like
-                      </span>
-                    </button>
-                  </div>
-
-                  <div className="border-e dark:border-neutral-600 block h-3 mx-3 border-gray-300" />
-
-                  <div className="hs-tooltip inline-block">
-                    <button
-                      className="hs-tooltip-toggle gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200 flex items-center text-sm text-gray-500"
-                      type="button"
-                    >
-                      <svg
-                        className="shrink-0 size-4"
-                        fill="none"
-                        height="24"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        width="24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z" />
-                      </svg>
-                      16
-                      <span
-                        className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible dark:bg-black absolute z-10 invisible inline-block px-2 py-1 text-xs font-medium text-white transition-opacity bg-gray-900 rounded shadow-sm opacity-0"
-                        role="tooltip"
-                      >
-                        Comment
-                      </span>
-                    </button>
-                  </div>
-
-                  <div className="border-e dark:border-neutral-600 block h-3 mx-3 border-gray-300" />
-
                   <div className="hs-dropdown relative inline-flex">
-                    <button
-                      aria-expanded="false"
-                      aria-haspopup="menu"
-                      aria-label="Dropdown"
-                      className="hs-dropdown-toggle gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200 flex items-center text-sm text-gray-500"
-                      id="hs-blog-article-share-dropdown"
-                      type="button"
-                    >
-                      <svg
-                        className="shrink-0 size-4"
-                        fill="none"
-                        height="24"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        width="24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
-                        <polyline points="16 6 12 2 8 6" />
-                        <line x1="12" x2="12" y1="2" y2="15" />
-                      </svg>
-                      Share
-                    </button>
+                    <Popover placement="top" showArrow={true}>
+                      <PopoverTrigger>
+                        <Button
+                          aria-expanded="false"
+                          aria-haspopup="menu"
+                          aria-label="Dropdown"
+                          className="hs-dropdown-toggle gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200 flex items-center text-sm text-gray-500"
+                          id="hs-blog-article-share-dropdown"
+                          type="button"
+                          variant="light"
+                        >
+                          <svg
+                            className="shrink-0 size-4"
+                            fill="none"
+                            height="24"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+                            <polyline points="16 6 12 2 8 6" />
+                            <line x1="12" x2="12" y1="2" y2="15" />
+                          </svg>
+                          Share
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent>
+                        <div>
+                          <div className="flex items-center gap-1 justify-center p-1">
+                            <Button isIconOnly color="secondary" size="sm">
+                              <IconFacebook height={20} width={20} />
+                            </Button>
+                            <Button isIconOnly color="secondary" size="sm">
+                              <IconLinkedin height={24} width={24} />
+                            </Button>
+                            <Button isIconOnly color="secondary" size="sm">
+                              <Icon height="24" icon="iconoir:instagram" width="24" />
+                            </Button>
+                          </div>
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+
                     <div
                       aria-labelledby="hs-blog-article-share-dropdown"
                       aria-orientation="vertical"
