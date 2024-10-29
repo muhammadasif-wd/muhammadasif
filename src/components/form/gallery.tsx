@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
 "use client";
-import React, {useState, useCallback, useEffect} from "react";
 import {Button} from "@nextui-org/button";
-import {Image} from "@nextui-org/image";
-import {NextPage} from "next";
 import {Pagination} from "@nextui-org/pagination";
+import {NextPage} from "next";
+import Image from "next/image";
+import React, {useCallback, useEffect, useState} from "react";
 
 import {IGallery} from "@/app/about/gallery/page";
 
@@ -208,10 +208,11 @@ const FormGallery: NextPage<Props> = ({data}) => {
           return (
             <div key={id} className="group focus:outline-none flex flex-col w-full h-auto">
               <Image
-                isZoomed
                 alt={title}
                 className="filter grayscale group-hover:grayscale-0 w-full h-auto transition-all duration-500 cursor-pointer object-cover object-center"
+                height={500}
                 src={img ?? ""}
+                width={800}
               />
               <div className="pt-4">
                 <h3 className="relative inline-block font-medium text-lg text-black before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-success before:transition before:origin-left before:scale-x-0 group-hover:before:scale-x-100 dark:text-white">
