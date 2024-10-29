@@ -19,7 +19,7 @@ const Page: NextPage<Props> = () => {
         <div className="lg:grid-cols-2 lg:gap-y-16 grid min-h-screen gap-10 py-10">
           <Link
             className="group rounded-xl focus:outline-none h-fit block overflow-hidden border"
-            href="#"
+            href="/about/events/1"
           >
             <div className="sm:flex-row sm:items-center sm:gap-5 flex flex-col gap-3">
               <div className="shrink-0 sm:w-56 h-44 relative w-full overflow-hidden">
