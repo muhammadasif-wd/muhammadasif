@@ -1,352 +1,223 @@
+"use client";
 import {Icon} from "@iconify/react";
 import {Button} from "@nextui-org/button";
 import {Popover, PopoverContent, PopoverTrigger} from "@nextui-org/popover";
-import {NextPage} from "next";
 import Image from "next/image";
 import Link from "next/link";
+import {useParams} from "next/navigation";
+import {useEffect, useState} from "react";
+
+import Aside from "./aside";
+import Loading from "./loading";
 
 import {IconFacebook} from "@/assets/icons/facebook";
 import IconLinkedin from "@/assets/icons/linkedin";
 
-interface Props {}
+export interface IEvent {
+  id: string;
+  images: string[];
+  title: string;
+  category: string;
+  date: string;
+  topContent: string;
+  firstContent: string;
+  middleContent: string;
+  endContent: string;
+  imgText: string;
+  tags: string;
+}
 
-const Page: NextPage<Props> = () => {
+const Page = () => {
+  const {id} = useParams();
+  const [event, setEvent] = useState<IEvent | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const handleFetchEvent = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/event/${id}`, {
+          method: "GET",
+          headers: {
+            "x-api-key": process.env.NEXT_PUBLIC_X_API_KEY || "",
+          },
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await res.json();
+
+        setEvent(data.data);
+      } catch (error) {
+        console.error(error);
+        throw error;
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    handleFetchEvent();
+  }, [id]);
+
+  const firstImage = event?.images[0];
+  const remainingImages = event?.images.slice(1);
+  const tags = event?.tags.split(" ");
+
   return (
     <div className="container mx-auto">
       <div className="lg:grid-cols-3 gap-y-8 lg:gap-y-0 lg:gap-x-6 grid">
         <div className="lg:col-span-2">
           <div className="lg:pe-8 py-8">
-            <div className="lg:space-y-8 space-y-5">
-              <Link
-                className="inline-flex items-center gap-x-1.5 text-sm text-gray-600 decoration-2 hover:underline focus:outline-none focus:underline dark:text-blue-500"
-                href="/about/events"
-              >
-                <svg
-                  className="shrink-0 size-4"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="m15 18-6-6 6-6" />
-                </svg>
-                Back to Events
-              </Link>
-
-              <h2 className="lg:text-5xl dark:text-white text-3xl font-bold">
-                Announcing a free plan for small teams
-              </h2>
-
-              <div className="gap-x-5 flex items-center">
-                <Link
-                  className="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
-                  href="#"
-                >
-                  Company News
-                </Link>
-                <p className="sm:text-sm dark:text-neutral-200 text-xs text-gray-800">
-                  January 18, 2023
-                </p>
+            {loading ? (
+              <div>
+                <Loading />
               </div>
+            ) : (
+              <div className="lg:space-y-8 space-y-5">
+                <Link
+                  className="inline-flex items-center gap-x-1.5 text-sm text-gray-600 decoration-2 hover:underline focus:outline-none focus:underline dark:text-blue-500"
+                  href="/about/events"
+                >
+                  <svg
+                    className="shrink-0 size-4"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="m15 18-6-6 6-6" />
+                  </svg>
+                  Back to Events
+                </Link>
 
-              <p className="dark:text-neutral-200 text-lg text-gray-800">
-                {`At preline, our mission has always been focused on bringing openness and
-                transparency to the design process. We've always believed that by providing a space
-                where designers can share ongoing work not only empowers them to make better
-                products, it also helps them grow.`}
-              </p>
+                <h2 className="lg:text-5xl dark:text-white text-3xl font-bold">{event?.title}</h2>
 
-              <p className="dark:text-neutral-200 text-lg text-gray-800">
-                {`We're proud to be a part of creating a more open culture and to continue building a
-                product that supports this vision.`}
-              </p>
+                <div className="gap-x-5 flex items-center">
+                  <Link
+                    className="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+                    href="#"
+                  >
+                    {event?.category}
+                  </Link>
+                  <p className="sm:text-sm dark:text-neutral-200 text-xs text-gray-800">
+                    {event?.date}
+                  </p>
+                </div>
 
-              <div className="text-center">
-                <div className="lg:grid-cols-2 grid gap-3">
-                  <div className="lg:grid-cols-1 grid grid-cols-2 gap-3">
-                    <figure className="h-60 relative w-full">
-                      <Image
-                        alt="Blog Image"
-                        className="hover:scale-105 focus:scale-105 size-full start-0 rounded-xl filter grayscale hover:grayscale-0 absolute top-0 object-cover object-center w-full h-full transition-transform duration-500 ease-in-out cursor-pointer"
-                        height={500}
-                        src="https://res.cloudinary.com/dgekxcjus/image/upload/v1730043705/ql3jtipjbbd4q5xivkbl.jpg"
-                        width={500}
-                      />
-                    </figure>
-                    <figure className="h-60 relative w-full">
+                <p className="dark:text-neutral-200 text-lg text-gray-800">{event?.topContent}</p>
+
+                <p className="dark:text-neutral-200 text-lg text-gray-800">{event?.firstContent}</p>
+
+                <div className="text-center">
+                  <div className="lg:grid-cols-2 grid gap-3">
+                    <div className="lg:grid-cols-1 grid grid-cols-2 gap-3">
+                      {remainingImages?.map((image, index) => (
+                        <figure key={index} className="h-60 relative w-full">
+                          <Image
+                            alt="Blog Image"
+                            className="hover:scale-105 focus:scale-105 size-full start-0 rounded-xl filter grayscale hover:grayscale-0 absolute top-0 object-cover object-center w-full h-full transition-transform duration-500 ease-in-out cursor-pointer"
+                            height={180}
+                            src={image}
+                            width={320}
+                          />
+                        </figure>
+                      ))}
+                    </div>
+                    <figure className="h-72 sm:h-96 lg:h-full relative w-full">
                       <Image
                         alt="Blog Image"
                         className="hover:scale-105 focus:scale-105 size-full start-0 rounded-xl filter grayscale hover:grayscale-0 absolute top-0 object-cover object-center w-full h-full transition-transform duration-500 ease-in-out cursor-pointer"
                         height={180}
-                        src="https://res.cloudinary.com/dgekxcjus/image/upload/v1730043705/ql3jtipjbbd4q5xivkbl.jpg"
+                        src={firstImage ?? ""}
                         width={320}
                       />
                     </figure>
                   </div>
-                  <figure className="h-72 sm:h-96 lg:h-full relative w-full">
-                    <Image
-                      alt="Blog Image"
-                      className="hover:scale-105 focus:scale-105 size-full start-0 rounded-xl filter grayscale hover:grayscale-0 absolute top-0 object-cover object-center w-full h-full transition-transform duration-500 ease-in-out cursor-pointer"
-                      height={180}
-                      src="https://res.cloudinary.com/dgekxcjus/image/upload/v1730043705/ql3jtipjbbd4q5xivkbl.jpg"
-                      width={320}
-                    />
-                  </figure>
+
+                  <span className="dark:text-neutral-500 block mt-3 text-sm text-center text-gray-500">
+                    {event?.imgText}
+                  </span>
                 </div>
 
-                <span className="dark:text-neutral-500 block mt-3 text-sm text-center text-gray-500">
-                  Working process
-                </span>
-              </div>
+                <p className="dark:text-neutral-200 text-lg text-gray-800">
+                  {event?.middleContent}
+                </p>
 
-              <p className="dark:text-neutral-200 text-lg text-gray-800">
-                {`As we've grown, we've seen how Preline has helped companies such as Spotify,
-                Microsoft, Airbnb, Facebook, and Intercom bring their designers closer together to
-                create amazing things. We've also learned that when the culture of sharing is
-                brought in earlier, the better teams adapt and communicate with one another.`}
-              </p>
+                <p className="dark:text-neutral-200 text-lg text-gray-800">{event?.endContent}</p>
 
-              <p className="dark:text-neutral-200 text-lg text-gray-800">
-                {`That's why we are excited to share that we now have a`}
-                <Link
-                  className="decoration-2 hover:underline focus:outline-none focus:underline dark:text-blue-500 font-medium text-blue-600"
-                  href="#"
-                >
-                  free version of Preline
-                </Link>
-                , which will allow individual designers, startups and other small teams a chance to
-                create a culture of openness early on.
-              </p>
+                <div className="lg:flex-row lg:justify-between lg:items-center gap-y-5 lg:gap-y-0 flex flex-col">
+                  <div>
+                    {tags?.map((tag, index) => (
+                      <p
+                        key={index}
+                        className="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                      >
+                        {tag}
+                      </p>
+                    ))}
+                  </div>
 
-              <div className="lg:flex-row lg:justify-between lg:items-center gap-y-5 lg:gap-y-0 flex flex-col">
-                <div>
-                  <Link
-                    className="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
-                    href="#"
-                  >
-                    Plan
-                  </Link>
-                  <Link
-                    className="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
-                    href="#"
-                  >
-                    Web development
-                  </Link>
-                  <Link
-                    className="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
-                    href="#"
-                  >
-                    Free
-                  </Link>
-                  <Link
-                    className="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
-                    href="#"
-                  >
-                    Team
-                  </Link>
-                </div>
-
-                <div className="flex justify-end items-center gap-x-1.5">
-                  <div className="hs-dropdown relative inline-flex">
-                    <Popover placement="top" showArrow={true}>
-                      <PopoverTrigger>
-                        <Button
-                          aria-expanded="false"
-                          aria-haspopup="menu"
-                          aria-label="Dropdown"
-                          className="hs-dropdown-toggle gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200 flex items-center text-sm text-gray-500"
-                          id="hs-blog-article-share-dropdown"
-                          type="button"
-                          variant="light"
-                        >
-                          <svg
-                            className="shrink-0 size-4"
-                            fill="none"
-                            height="24"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
+                  <div className="flex justify-end items-center gap-x-1.5">
+                    <div className="hs-dropdown relative inline-flex">
+                      <Popover placement="top" showArrow={true}>
+                        <PopoverTrigger>
+                          <Button
+                            aria-expanded="false"
+                            aria-haspopup="menu"
+                            aria-label="Dropdown"
+                            className="hs-dropdown-toggle gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200 flex items-center text-sm text-gray-500"
+                            id="hs-blog-article-share-dropdown"
+                            type="button"
+                            variant="light"
                           >
-                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
-                            <polyline points="16 6 12 2 8 6" />
-                            <line x1="12" x2="12" y1="2" y2="15" />
-                          </svg>
-                          Share
-                        </Button>
-                      </PopoverTrigger>
-                      <PopoverContent>
-                        <div>
-                          <div className="flex items-center gap-1 justify-center p-1">
-                            <Button isIconOnly color="secondary" size="sm">
-                              <IconFacebook height={20} width={20} />
-                            </Button>
-                            <Button isIconOnly color="secondary" size="sm">
-                              <IconLinkedin height={24} width={24} />
-                            </Button>
-                            <Button isIconOnly color="secondary" size="sm">
-                              <Icon height="24" icon="iconoir:instagram" width="24" />
-                            </Button>
+                            <svg
+                              className="shrink-0 size-4"
+                              fill="none"
+                              height="24"
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+                              <polyline points="16 6 12 2 8 6" />
+                              <line x1="12" x2="12" y1="2" y2="15" />
+                            </svg>
+                            Share
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <div>
+                            <div className="flex items-center gap-1 justify-center p-1">
+                              <Button isIconOnly color="secondary" size="sm">
+                                <IconFacebook height={20} width={20} />
+                              </Button>
+                              <Button isIconOnly color="secondary" size="sm">
+                                <IconLinkedin height={24} width={24} />
+                              </Button>
+                              <Button isIconOnly color="secondary" size="sm">
+                                <Icon height="24" icon="iconoir:instagram" width="24" />
+                              </Button>
+                            </div>
                           </div>
-                        </div>
-                      </PopoverContent>
-                    </Popover>
-
-                    <div
-                      aria-labelledby="hs-blog-article-share-dropdown"
-                      aria-orientation="vertical"
-                      className="hs-dropdown-menu w-56 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mb-1 z-10 bg-gray-900 shadow-md rounded-xl p-2 dark:bg-black"
-                      role="menu"
-                    >
-                      <Link
-                        className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-400 hover:bg-white/10 focus:outline-none focus:bg-white/10 dark:text-neutral-400 dark:hover:bg-neutral-900 dark:focus:bg-neutral-900"
-                        href="#"
-                      >
-                        <svg
-                          className="shrink-0 size-4"
-                          fill="none"
-                          height="24"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          viewBox="0 0 24 24"
-                          width="24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                        </svg>
-                        Copy link
-                      </Link>
-                      <div className="dark:border-neutral-800 my-2 border-t border-gray-600" />
-                      <Link
-                        className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-400 hover:bg-white/10 focus:outline-none focus:bg-white/10 dark:text-neutral-400 dark:hover:bg-neutral-900 dark:focus:bg-neutral-900"
-                        href="#"
-                      >
-                        <svg
-                          className="shrink-0 size-4"
-                          fill="currentColor"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          width="16"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
-                        </svg>
-                        Share on Twitter
-                      </Link>
-                      <Link
-                        className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-400 hover:bg-white/10 focus:outline-none focus:bg-white/10 dark:text-neutral-400 dark:hover:bg-neutral-900 dark:focus:bg-neutral-900"
-                        href="#"
-                      >
-                        <svg
-                          className="shrink-0 size-4"
-                          fill="currentColor"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          width="16"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
-                        </svg>
-                        Share on Facebook
-                      </Link>
-                      <Link
-                        className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-400 hover:bg-white/10 focus:outline-none focus:bg-white/10 dark:text-neutral-400 dark:hover:bg-neutral-900 dark:focus:bg-neutral-900"
-                        href="#"
-                      >
-                        <svg
-                          className="shrink-0 size-4"
-                          fill="currentColor"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          width="16"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
-                        </svg>
-                        Share on LinkedIn
-                      </Link>
+                        </PopoverContent>
+                      </Popover>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
-
-        <div className="lg:col-span-1 lg:w-full lg:h-full lg:bg-gradient-to-r lg:from-gray-50 lg:via-transparent lg:to-transparent dark:from-neutral-800">
-          <div className="start-0 lg:ps-8 sticky top-0 py-8">
-            <div className="group gap-x-3 dark:border-neutral-700 flex items-center pb-8 mb-8 border-b border-gray-200">
-              <h1 className="md:text-xl font-bold">All Events</h1>
-            </div>
-
-            <div className="space-y-6">
-              <Link className="group gap-x-6 focus:outline-none flex items-center" href="#">
-                <div className="grow">
-                  <span className="group-hover:text-blue-600 group-focus:text-blue-600 dark:text-neutral-200 dark:group-hover:text-blue-500 dark:group-focus:text-blue-500 text-sm font-bold text-gray-800">
-                    5 Reasons to Not start a UX Designer Career in 2022/2023
-                  </span>
-                </div>
-
-                <div className="shrink-0 size-20 relative overflow-hidden rounded-lg">
-                  <Image
-                    alt="Blog Image"
-                    className="group-hover:scale-105 group-focus:scale-105 size-full start-0 rounded-l-xl filter grayscale group-hover:grayscale-0 absolute top-0 object-cover object-center w-full h-full transition-transform duration-500 ease-in-out cursor-pointer"
-                    height={180}
-                    src="https://res.cloudinary.com/dgekxcjus/image/upload/v1730043705/ql3jtipjbbd4q5xivkbl.jpg"
-                    width={320}
-                  />
-                </div>
-              </Link>
-
-              <Link className="group gap-x-6 focus:outline-none flex items-center" href="#">
-                <div className="grow">
-                  <span className="group-hover:text-blue-600 group-focus:text-blue-600 dark:text-neutral-200 dark:group-hover:text-blue-500 dark:group-focus:text-blue-500 text-sm font-bold text-gray-800">
-                    If your UX Portfolio has this 20% Well Done, it Will Give You an 80% Result
-                  </span>
-                </div>
-
-                <div className="shrink-0 size-20 relative overflow-hidden rounded-lg">
-                  <Image
-                    alt="Blog Image"
-                    className="group-hover:scale-105 group-focus:scale-105 size-full start-0 rounded-l-xl filter grayscale group-hover:grayscale-0 absolute top-0 object-cover object-center w-full h-full transition-transform duration-500 ease-in-out cursor-pointer"
-                    height={180}
-                    src="https://res.cloudinary.com/dgekxcjus/image/upload/v1730043705/ql3jtipjbbd4q5xivkbl.jpg"
-                    width={320}
-                  />
-                </div>
-              </Link>
-
-              <Link className="group gap-x-6 focus:outline-none flex items-center" href="#">
-                <div className="grow">
-                  <span className="group-hover:text-blue-600 group-focus:text-blue-600 dark:text-neutral-200 dark:group-hover:text-blue-500 dark:group-focus:text-blue-500 text-sm font-bold text-gray-800">
-                    7 Principles of Icon Design
-                  </span>
-                </div>
-
-                <div className="shrink-0 size-20 relative overflow-hidden rounded-lg">
-                  <Image
-                    alt="Blog Image"
-                    className="group-hover:scale-105 group-focus:scale-105 size-full start-0 rounded-l-xl filter grayscale group-hover:grayscale-0 absolute top-0 object-cover object-center w-full h-full transition-transform duration-500 ease-in-out cursor-pointer"
-                    height={180}
-                    src="https://res.cloudinary.com/dgekxcjus/image/upload/v1730043705/ql3jtipjbbd4q5xivkbl.jpg"
-                    width={320}
-                  />
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
+        <Aside />
       </div>
     </div>
   );

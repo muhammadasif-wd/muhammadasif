@@ -1,12 +1,10 @@
-import {Card, CardBody} from "@nextui-org/card";
-import {Image} from "@nextui-org/image";
-import Link from "next/link";
-import React from "react";
-
 const Worlds = () => {
   return (
-    <div className="container">
-      <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+    <div className="container mx-auto h-screen">
+      <h1 className="text-7xl font-bold uppercase text-center flex justify-center items-center text-dark dark:text-light h-full my-auto">
+        Coming Soon...
+      </h1>
+      {/* <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
         <Card shadow="sm">
           <CardBody>
             <Link className="group block" href="#">
@@ -147,7 +145,7 @@ const Worlds = () => {
             </Link>
           </CardBody>
         </Card>
-      </div>
+      </div> */}
     </div>
   );
 };
