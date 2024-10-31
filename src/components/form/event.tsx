@@ -4,21 +4,23 @@ import {Button} from "@nextui-org/button";
 import {Pagination} from "@nextui-org/pagination";
 import {NextPage} from "next";
 import Image from "next/image";
+import Link from "next/link";
 import React, {useCallback, useEffect, useState} from "react";
 
-import {IGallery} from "@/app/about/gallery/page";
+import {IEvent} from "@/app/about/events/page";
+import {shuffle} from "@/utils/shuffle";
 
 type Props = {
-  data: IGallery[];
+  data: IEvent[];
 };
 
-const FormGallery: NextPage<Props> = ({data}) => {
+const FormEvent: NextPage<Props> = ({data}) => {
   const [formData, setFormData] = useState({searchTerm: ""});
   const [submitStatus, setSubmitStatus] = useState<{
     success: boolean;
     message: string;
     error: {path: string; message: string}[];
-    data?: IGallery[];
+    data?: IEvent[];
   }>({
     success: false,
     message: "",
@@ -27,7 +29,7 @@ const FormGallery: NextPage<Props> = ({data}) => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [paginationData, setPaginationData] = useState<IGallery[]>([]);
+  const [paginationData, setPaginationData] = useState<IEvent[]>([]);
   const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 10;
 
@@ -54,17 +56,17 @@ const FormGallery: NextPage<Props> = ({data}) => {
 
   const debounceSearch = useCallback(
     debounce((searchTerm: string) => {
-      fetchGalleries(searchTerm, 1);
+      fetchEvents(searchTerm, 1);
     }, 500),
     [],
   );
 
-  const fetchGalleries = async (searchTerm: string = "", page: number = 1) => {
+  const fetchEvents = async (searchTerm: string = "", page: number = 1) => {
     setIsLoading(true);
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/gallery?searchTerm=${searchTerm}&page=${page}&limit=${itemsPerPage}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/event?searchTerm=${searchTerm}&page=${page}&limit=${itemsPerPage}`,
         {
           method: "GET",
           headers: {
@@ -102,7 +104,7 @@ const FormGallery: NextPage<Props> = ({data}) => {
   };
 
   useEffect(() => {
-    fetchGalleries(formData.searchTerm, currentPage);
+    fetchEvents(formData.searchTerm, currentPage);
   }, [currentPage]);
 
   const handlePageChange = (page: number) => {
@@ -118,13 +120,13 @@ const FormGallery: NextPage<Props> = ({data}) => {
               className="dark:text-white block text-sm font-medium text-gray-700"
               htmlFor="hs-search-article-1"
             >
-              <span className="sr-only">Search gallery</span>
+              <span className="sr-only">Search event</span>
             </label>
             <input
               className="focus:outline-none focus:bg-white focus:border-primary/30 dark:focus:border-light/30 bg-light dark:bg-primary/30 border-light dark:border-primary/30 border-1 text-primary/70 dark:text-light/70 w-full px-4 py-2 leading-tight rounded appearance-none"
               id="searchTerm"
               name="searchTerm"
-              placeholder="Search gallery"
+              placeholder="Search event"
               type="search"
               value={formData.searchTerm}
               onChange={handleInputChange}
@@ -177,38 +179,42 @@ const FormGallery: NextPage<Props> = ({data}) => {
           : data && data.length > 0
             ? data
             : paginationData
-        )?.map(({id, title, img, description, tags}) => {
+        )?.map(({id, title, topContent, images, tags}) => {
           const tagsData = tags.split(" ");
+          const remainingImages = images.slice(1);
+          const image = shuffle(remainingImages);
 
           return (
-            <div key={id} className="group focus:outline-none flex flex-col w-full h-auto">
-              <Image
-                alt={title}
-                className="rounded-xl filter grayscale group-hover:grayscale-0 w-full h-auto transition-all duration-500 cursor-pointer object-cover object-center"
-                height={500}
-                src={img ?? ""}
-                width={800}
-              />
-              <div className="pt-4">
-                <h3 className="relative inline-block font-medium text-lg text-black before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-success before:transition before:origin-left before:scale-x-0 group-hover:before:scale-x-100 dark:text-white">
-                  {title}
-                </h3>
-                <p className="dark:text-light/70 text-secondary mt-1">{description}</p>
+            <Link key={id} href={`/about/events/${id}`}>
+              <div key={id} className="group focus:outline-none flex flex-col w-full h-auto">
+                <Image
+                  alt={title}
+                  className="rounded-xl filter grayscale group-hover:grayscale-0 w-full h-96 transition-all duration-500 cursor-pointer object-cover object-center"
+                  height={500}
+                  src={image[0] ?? ""}
+                  width={800}
+                />
+                <div className="pt-4">
+                  <h3 className="relative inline-block font-medium text-lg text-black before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-success before:transition before:origin-left before:scale-x-0 group-hover:before:scale-x-100 dark:text-white">
+                    {title}
+                  </h3>
+                  <p className="dark:text-light/70 text-secondary mt-1">{topContent}</p>
 
-                <div className="flex flex-wrap gap-2 mt-3">
-                  {tagsData.map((tag, index) => {
-                    return (
-                      <span
-                        key={index}
-                        className="py-1.5 px-3 bg-white text-secondary dark:text-light/70 border border-gray-200 text-xs sm:text-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700"
-                      >
-                        {tag}
-                      </span>
-                    );
-                  })}
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {tagsData.map((tag, index) => {
+                      return (
+                        <span
+                          key={index}
+                          className="py-1.5 px-3 bg-white text-secondary dark:text-light/70 border border-gray-200 text-xs sm:text-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700"
+                        >
+                          {tag}
+                        </span>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
@@ -217,4 +223,4 @@ const FormGallery: NextPage<Props> = ({data}) => {
   );
 };
 
-export default FormGallery;
+export default FormEvent;

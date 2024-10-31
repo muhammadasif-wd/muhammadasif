@@ -128,15 +128,17 @@ const Page = () => {
                         </figure>
                       ))}
                     </div>
-                    <figure className="h-72 sm:h-96 lg:h-full relative w-full">
-                      <Image
-                        alt="Blog Image"
-                        className="hover:scale-105 focus:scale-105 size-full start-0 rounded-xl filter grayscale hover:grayscale-0 absolute top-0 object-cover object-center w-full h-full transition-transform duration-500 ease-in-out cursor-pointer"
-                        height={180}
-                        src={firstImage ?? ""}
-                        width={320}
-                      />
-                    </figure>
+                    {firstImage && (
+                      <figure className="h-72 sm:h-96 lg:h-full relative w-full">
+                        <Image
+                          alt="Blog Image"
+                          className="hover:scale-105 focus:scale-105 size-full start-0 rounded-xl filter grayscale hover:grayscale-0 absolute top-0 object-cover object-center w-full h-full transition-transform duration-500 ease-in-out cursor-pointer"
+                          height={180}
+                          src={firstImage}
+                          width={320}
+                        />
+                      </figure>
+                    )}
                   </div>
 
                   <span className="dark:text-neutral-500 block mt-3 text-sm text-center text-gray-500">

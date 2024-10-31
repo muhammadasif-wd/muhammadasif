@@ -1,7 +1,20 @@
-import Image from "next/image";
-import Link from "next/link";
-
+import FormEvent from "@/components/form/event";
 import Alert from "@/shared/alert";
+import {shuffle} from "@/utils/shuffle";
+
+export interface IEvent {
+  id: string;
+  images: string[];
+  title: string;
+  category: string;
+  date: string;
+  topContent: string;
+  firstContent: string;
+  middleContent: string;
+  endContent: string;
+  imgText: string;
+  tags: string;
+}
 
 async function getData() {
   try {
@@ -22,19 +35,6 @@ async function getData() {
     throw error;
   }
 }
-export interface IEvent {
-  id: string;
-  images: string[];
-  title: string;
-  category: string;
-  date: string;
-  topContent: string;
-  firstContent: string;
-  middleContent: string;
-  endContent: string;
-  imgText: string;
-  tags: string;
-}
 
 const Page = async () => {
   let data;
@@ -42,78 +42,79 @@ const Page = async () => {
 
   try {
     data = await getData();
+    data = shuffle(data?.data);
   } catch (err) {
     error = (err as Error).message;
   }
 
   return (
-    <div>
-      <div className="sm:px-6 lg:px-8 lg:py-14 container px-4 py-10 mx-auto">
-        <div className="lg:mb-14 max-w-2xl mx-auto mb-10 text-center">
-          <h2 className="md:text-4xl md:leading-tight dark:text-white text-2xl font-bold">
-            Events
-          </h2>
-          <p className="dark:text-neutral-400 mt-1 text-gray-600">
+    <div className="container min-h-screen mx-auto">
+      <div className="relative overflow-hidden">
+        <div className="text-center">
+          <h1 className="sm:text-6xl dark:text-light text-secondary text-4xl font-bold">Events</h1>
+
+          <p className="dark:text-light/70 text-secondary mt-3">
             {`Dive into my events, where I've added all my events and conferences`}
           </p>
-        </div>
-        <div className="lg:grid-cols-2 lg:gap-y-16 grid min-h-screen gap-10 py-10">
-          {data.data.map(({id, images, title, topContent}: IEvent) => {
-            const randomIndex = Math.floor(Math.random() * images.length);
-            const randomImage = images[randomIndex];
 
-            return (
-              <Link
-                key={id}
-                className="group rounded-xl focus:outline-none h-fit block overflow-hidden border"
-                href={`/about/events/${id}`}
+          <div className="mt-7 sm:mt-12 relative max-w-xl mx-auto">
+            <div className="md:block end-0 absolute top-0 hidden translate-x-20 -translate-y-12">
+              <svg
+                className="w-16 h-auto text-orange-500"
+                fill="none"
+                height="135"
+                viewBox="0 0 121 135"
+                width="121"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <div className="sm:flex-row sm:items-center sm:gap-5 flex flex-col gap-3">
-                  <div className="shrink-0 sm:w-56 h-44 relative w-full overflow-hidden">
-                    <Image
-                      key={randomIndex}
-                      alt="Blog Image"
-                      className="group-hover:scale-105 group-focus:scale-105 size-full start-0 rounded-l-xl filter grayscale group-hover:grayscale-0 absolute top-0 object-cover object-center w-full h-full transition-transform duration-500 ease-in-out cursor-pointer"
-                      height={180}
-                      src={randomImage}
-                      width={320}
-                    />
-                  </div>
+                <path
+                  d="M5 16.4754C11.7688 27.4499 21.2452 57.3224 5 89.0164"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeWidth="10"
+                />
+                <path
+                  d="M33.6761 112.104C44.6984 98.1239 74.2618 57.6776 83.4821 5"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeWidth="10"
+                />
+                <path
+                  d="M50.5525 130C68.2064 127.495 110.731 117.541 116 78.0874"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeWidth="10"
+                />
+              </svg>
+            </div>
+            <div className="md:block start-0 absolute bottom-0 hidden -translate-x-32 translate-y-10">
+              <svg
+                className="text-cyan-500 w-40 h-auto"
+                fill="none"
+                height="188"
+                viewBox="0 0 347 188"
+                width="347"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 82.4591C54.7956 92.8751 30.9771 162.782 68.2065 181.385C112.642 203.59 127.943 78.57 122.161 25.5053C120.504 2.2376 93.4028 -8.11128 89.7468 25.5053C85.8633 61.2125 130.186 199.678 180.982 146.248L214.898 107.02C224.322 95.4118 242.9 79.2851 258.6 107.02C274.299 134.754 299.315 125.589 309.861 117.539L343 93.4426"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeWidth="7"
+                />
+              </svg>
+            </div>
+          </div>
 
-                  <div className="grow">
-                    <h3 className="group-hover:text-gray-600 dark:text-neutral-300 dark:group-hover:text-white text-xl font-semibold text-gray-800">
-                      {title}
-                    </h3>
-                    <p className="dark:text-neutral-400 mt-3 text-gray-600">
-                      {topContent.slice(0, 100)}...
-                    </p>
-                    <p className="gap-x-1 decoration-2 group-hover:underline group-focus:underline dark:text-blue-500 inline-flex items-center mt-4 text-sm font-medium text-blue-600">
-                      Read more
-                      <svg
-                        className="shrink-0 size-4"
-                        fill="none"
-                        height="24"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        width="24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="m9 18 6-6-6-6" />
-                      </svg>
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+          <div className="sm:mt-20 flex flex-wrap justify-center gap-1 mt-10" />
         </div>
       </div>
-      {error && (
-        <Alert message={error || "Something went wrong!"} style="py-2 px-4 w-fit" type="danger" />
-      )}
+      <div className="my-3">
+        <FormEvent data={data} />
+        {error && (
+          <Alert message={error || "Something went wrong!"} style="py-2 px-4 w-fit" type="danger" />
+        )}
+      </div>
     </div>
   );
 };
