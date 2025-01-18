@@ -1,17 +1,17 @@
-"use client";
-import { Button } from "@/components/ui/button";
+'use client';
+import { Button } from '@/components/ui/button';
 import {
   Sheet,
   SheetContent,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { cn } from "@/lib/utils";
-import { H2 } from "@/utils/typography/h2";
-import { Menu } from "lucide-react";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { ModeToggle } from "../theme/mode-toggle";
+} from '@/components/ui/sheet';
+import { cn } from '@/lib/utils';
+import { H2 } from '@/utils/typography/h2';
+import { Menu } from 'lucide-react';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { ModeToggle } from '../theme/mode-toggle';
 
 const Header = () => {
   const [scroll, setScroll] = useState(false);
@@ -23,17 +23,17 @@ const Header = () => {
     }
   };
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
     <header
       className={cn(
-        "sticky top-0 inset-x-0 border-b select-none z-50",
-        scroll && "backdrop-blur-md"
+        'sticky top-0 inset-x-0 border-b select-none z-50',
+        scroll && 'backdrop-blur-md',
       )}
     >
       <div className="flex items-center justify-between py-4 container mx-auto">
@@ -109,10 +109,10 @@ const MobileMenu = () => {
             Blogs
           </Link>
           <div className="flex gap-2 w-full mt-4">
-            <Button className="w-full" variant="outline" size={"sm"}>
+            <Button className="w-full" variant="outline" size={'sm'}>
               Log in
             </Button>
-            <Button className="w-full" size={"sm"}>
+            <Button className="w-full" size={'sm'}>
               Sign up
             </Button>
             <ModeToggle />
