@@ -13,6 +13,7 @@ import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { ModeToggle } from '../theme/mode-toggle';
+import { navbar } from './data';
 
 const Header = () => {
   const [scroll, setScroll] = useState(false);
@@ -44,21 +45,11 @@ const Header = () => {
           </Link>
         </div>
         <nav className="hidden md:flex items-center gap-6">
-          <Link href="/">
-            <Small>Home</Small>
-          </Link>
-          <Link href="/about">
-            <Small>About</Small>
-          </Link>
-          <Link href="/projects">
-            <Small>Projects</Small>
-          </Link>
-          <Link href="/blogs">
-            <Small>Blogs</Small>
-          </Link>
-          <Link href="/events">
-            <Small>Events</Small>
-          </Link>
+          {navbar.map((item) => (
+            <Link key={item.path} href={item.path}>
+              <Small>{item.name}</Small>
+            </Link>
+          ))}
         </nav>
         <div className="hidden md:flex items-center gap-4">
           <Button>
@@ -83,37 +74,18 @@ const MobileMenu = () => {
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="w-[300px]">
-        <SheetTitle>
-          <span className="sr-only">Title</span>
-        </SheetTitle>
+        <SheetTitle></SheetTitle>
         <div className="flex flex-col gap-4 mt-8">
-          <Link href="/" className="text-lg font-medium hover:text-gray-600">
-            Home
-          </Link>
-          <Link
-            href="/docs"
-            className="text-lg font-medium hover:text-gray-600"
-          >
-            Docs
-          </Link>
-          <Link
-            href="/components"
-            className="text-lg font-medium hover:text-gray-600"
-          >
-            Components
-          </Link>
-          <Link
-            href="/Blogs"
-            className="text-lg font-medium hover:text-gray-600"
-          >
-            Blogs
-          </Link>
+          {navbar.map((item) => (
+            <Link key={item.path} href={item.path}>
+              <Small>{item.name}</Small>
+            </Link>
+          ))}
           <div className="flex gap-2 w-full mt-4">
-            <Button className="w-full" variant="outline" size={'sm'}>
-              Log in
-            </Button>
-            <Button className="w-full" size={'sm'}>
-              Sign up
+            <Button>
+              <Link href="/resume">
+                <Small>Resume</Small>
+              </Link>
             </Button>
             <ModeToggle />
           </div>
