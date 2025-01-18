@@ -7,7 +7,8 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
-import { H2 } from '@/utils/typography/h2';
+import { P } from '@/utils/typography/p';
+import { Small } from '@/utils/typography/small';
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -38,34 +39,33 @@ const Header = () => {
     >
       <div className="flex items-center justify-between py-4 container mx-auto">
         <div>
-          <H2>Muhammad Asif</H2>
+          <Link href="/">
+            <P>Muhammad Asif</P>
+          </Link>
         </div>
         <nav className="hidden md:flex items-center gap-6">
-          <Link href="/" className="text-sm font-medium hover:text-gray-600">
-            Home
+          <Link href="/">
+            <Small>Home</Small>
           </Link>
-          <Link
-            href="/docs"
-            className="text-sm font-medium hover:text-gray-600"
-          >
-            Docs
+          <Link href="/about">
+            <Small>About</Small>
           </Link>
-          <Link
-            href="/components"
-            className="text-sm font-medium hover:text-gray-600"
-          >
-            Components
+          <Link href="/projects">
+            <Small>Projects</Small>
           </Link>
-          <Link
-            href="/blogs"
-            className="text-sm font-medium hover:text-gray-600"
-          >
-            Blogs
+          <Link href="/blogs">
+            <Small>Blogs</Small>
+          </Link>
+          <Link href="/events">
+            <Small>Events</Small>
           </Link>
         </nav>
         <div className="hidden md:flex items-center gap-4">
-          <Button variant="ghost">Log in</Button>
-          <Button>Sign up</Button>
+          <Button>
+            <Link href="/resume">
+              <Small>Resume</Small>
+            </Link>
+          </Button>
           <ModeToggle />
         </div>
         <MobileMenu />
