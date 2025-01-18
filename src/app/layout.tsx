@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto_Slab } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
 import Provider from "./provider";
 
 const roboto_slab = Roboto_Slab({
